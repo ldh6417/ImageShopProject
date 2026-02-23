@@ -1,13 +1,28 @@
+/* 전체 배경 */
 body {
-  background-color: lightblue;
+	margin: 0;
+	padding: 0;
+	background: linear-gradient(135deg, #e3f2fd 0%, #f5f7fa 100%);
+	font-family: 'Noto Sans KR', sans-serif;
 }
 
+/* 홈 영역 카드 느낌 */
+.home-wrapper, .codegroup-table {
+	background-color: white;
+	border-radius: 12px;
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+/* 제목 */
 h1 {
-  color: white;
-  text-align: center;
+	color: #2c3e50;
+	font-size: 32px;
+	margin-bottom: 20px;
 }
 
+/* 서버 시간 */
 p {
-  font-family: verdana;
-  font-size: 20px;
+	font-family: verdana, sans-serif;
+	font-size: 18px;
+	color: #666;
 }

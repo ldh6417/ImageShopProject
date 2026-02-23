@@ -10,24 +10,24 @@
 <head>
 <meta charset="UTF-8">
 <title>Image Shop</title>
+<link rel="stylesheet" href="/css/layout.css">
 <link rel="stylesheet" href="/css/codegroup.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/common/header.jsp" />
 	<jsp:include page="/WEB-INF/views/common/menu.jsp" />
+
 	<div align="center">
 		<h2>
 			<spring:message code="codegroup.header.modify" />
 		</h2>
-		<form:form modelAttribute="codeGroup" action="/codegroup/modify"
-			method="post">
-			<table>
+
+		<form:form id="codeGroup" modelAttribute="codeGroup"
+			action="/codegroup/modify" method="post">
+
+			<table class="codegroup-table">
 				<tr>
-					<!--   
-					<td><label for="groupCode">코드그룹</label> </td>
-					<td><input type="text" name="groupCode" id="groupCode"/></td>
-					-->
 					<td><spring:message code="codegroup.groupCode" /></td>
 					<td><form:input path="groupCode" readonly="true" /></td>
 					<td><font color="red"><form:errors path="groupCode" /></font></td>
@@ -40,11 +40,11 @@
 			</table>
 		</form:form>
 
-		<div>
-			<button type="submit" id="btnModify">
+		<div class="btn-area">
+			<button type="button" id="btnModify">
 				<spring:message code="action.modify" />
 			</button>
-			<button type="submit" id="btnList">
+			<button type="button" id="btnList">
 				<spring:message code="action.list" />
 			</button>
 		</div>
@@ -53,19 +53,21 @@
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 
 	<script>
-		<!-- $(document).ready(function() : html 코드가 document로 객체가 완료 -->
 		$(document).ready(function() {
-			<!-- form 객체찾기  -->
+
 			let formObj = $("#codeGroup");
-			<!-- $("#btnRegister").on("click", function() : 등록버튼을 클릭할때 작동하는 핸들러정의 -->
+
+			// 수정
 			$("#btnModify").on("click", function() {
-				formObj.submit(); 
+				formObj.submit();
 			});
+
+			// 목록
 			$("#btnList").on("click", function() {
-				<!-- 서버에 페이지요청  http://localhost:8080/codegroup/list -->
 				self.location = "/codegroup/list";
 			});
 		});
 	</script>
+
 </body>
 </html>

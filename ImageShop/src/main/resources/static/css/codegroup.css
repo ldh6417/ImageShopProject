@@ -1,6 +1,140 @@
 @charset "UTF-8";
 
-table td {
-	background-color: orange;
+/* ===== 공통 배경 ===== */
+body {
+	margin: 0;
+	padding: 0;
+	background: linear-gradient(135deg, #e3f2fd 0%, #f5f7fa 100%);
+	font-family: 'Noto Sans KR', sans-serif;
+}
+
+/* ===== 제목 ===== */
+h1, h2 {
+	color: #1565c0;
+}
+
+/* ===== 테이블 ===== */
+.codegroup-table {
+	margin: 25px auto;
+	width: 640px;
+	max-width: 90%;
+	border-collapse: collapse;
+	background-color: white;
+	box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+	border-radius: 12px;
+	overflow: hidden;
+}
+
+/* ===== 행 구분선 ===== */
+.codegroup-table tr {
+	border-bottom: 1px solid #f0f0f0;
+}
+
+.codegroup-table tr:last-child {
+	border-bottom: none;
+}
+
+/* ===== header ===== */
+.codegroup-table th {
+	padding: 14px 20px;
+	background: #f1f6fb;
+	color: #1565c0;
+	font-weight: 600;
+	border-bottom: 2px solid #e3eef9;
+}
+
+/* ===== 셀 ===== */
+.codegroup-table td {
+	padding: 14px 20px;
 	text-align: center;
+}
+
+/* ===== 폼 첫 컬럼 ===== */
+.codegroup-table td:first-child {
+	text-align: left;
+	font-weight: 600;
+	color: #555;
+	width: 160px;
+	background: #fafcff;
+}
+
+/* ===== 입력 영역 ===== */
+.codegroup-table td:nth-child(2) {
+	text-align: left;
+}
+
+/* ===== 에러 영역 ===== */
+.codegroup-table td:nth-child(3) {
+	width: 160px;
+	font-size: 13px;
+}
+
+/* ===== 입력창 ===== */
+.codegroup-table input {
+	width: 100%;
+	padding: 8px 10px;
+	border: 1px solid #d0d7de;
+	border-radius: 6px;
+	font-family: 'Noto Sans KR', sans-serif;
+	font-size: 14px;
+	outline: none;
+	font-size: 14px;
+}
+
+.codegroup-table input:focus {
+	border-color: #1e88e5;
+}
+
+/* ===== 버튼 ===== */
+button {
+	margin: 20px 5px;
+	padding: 9px 20px;
+	border: none;
+	border-radius: 8px;
+	background: #1e88e5;
+	color: white;
+	cursor: pointer;
+	font-weight: bold;
+}
+
+/* ===== 버튼 hover (기초 버전) ===== */
+button:hover {
+	background: #1565c0;
+}
+
+/* ===== 버튼 영역 ===== */
+.btn-area {
+	margin-top: 25px;
+	text-align: center;
+}
+
+/* ===== 상단 링크 버튼 ===== */
+.btn-link {
+	display: inline-block;
+	margin: 15px 0;
+	padding: 8px 16px;
+	background: #1e88e5;
+	color: white;
+	border-radius: 6px;
+	font-size: 14px;
+	font-weight: 600;
+}
+
+.btn-link:hover {
+	background: #1565c0;
+}
+
+/* ===== 행 hover ===== */
+.codegroup-table tr:hover {
+	background-color: #f8fbff;
+}
+/* ===== 페이지 카드 ===== */
+.page-wrapper {
+	width: 900px;
+	max-width: 95%;
+	margin: 40px auto;
+	padding: 30px 25px;
+	background: white;
+	border-radius: 14px;
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
 }

@@ -68,4 +68,22 @@ public class CodeGroupController {
 		return "redirect:/codegroup/list";
 	}
 
+	// 코드 그룹 수정페이지 요청
+	@GetMapping("/modify")
+	public void modifyForm(CodeGroup Codegroup, Model model) throws Exception {
+		model.addAttribute(service.read(Codegroup));
+	}
+
+	// 코드 그룹 수정등록페이지 요청
+	@PostMapping("/modify")
+	public String modify(CodeGroup Codegroup, RedirectAttributes rttr) throws Exception {
+		int count = service.modify(Codegroup);
+		if (count != 0) {
+			rttr.addFlashAttribute("msg", "SUCCES");
+		} else {
+			rttr.addFlashAttribute("msg", "FAIL");
+		}
+		return "redirect:/codegroup/list";
+	}
+
 }

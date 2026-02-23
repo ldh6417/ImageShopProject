@@ -16,4 +16,7 @@ public interface CodeGroupService {
 	
 	// 코드그룹삭제 처리 
 	public int remove(CodeGroup codeGroup) throws Exception;
+	
+	// 수정 처리 
+	public int modify(CodeGroup codeGroup) throws Exception;
 }

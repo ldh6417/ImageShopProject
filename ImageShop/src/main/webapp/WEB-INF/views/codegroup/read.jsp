@@ -41,13 +41,13 @@
 
 		<div>
 			<button type="submit" id="btnEdit">
-				<spring:message code="action.edit" />
+				<spring:message code="action.edit"/>
 			</button>
 			<button type="submit" id="btnRemove">
-				<spring:message code="action.remove" />
+				<spring:message code="action.remove"/>
 			</button>
 			<button type="submit" id="btnList">
-				<spring:message code="action.list" />
+				<spring:message code="action.list"/>
 			</button>
 		</div>
 	</div>

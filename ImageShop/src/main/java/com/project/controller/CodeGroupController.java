@@ -47,23 +47,25 @@ public class CodeGroupController {
 		log.info("model.getAttribute(msg) = " + model.getAttribute("msg"));
 		model.addAttribute("list", service.list());
 	}
-	
+
 	// 코드 그룹 상세 페이지
 	@GetMapping("/read")
-	public void read(CodeGroup groupCode, Model model) throws Exception { 
-	model.addAttribute(service.read(groupCode));
+	public void read(CodeGroup Codegroup, Model model) throws Exception {
+		model.addAttribute(service.read(Codegroup));
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
+	// 코드 그룹 삭제 처리 요청
+	@PostMapping("/remove")
+	public String remove(CodeGroup Codegroup, RedirectAttributes rttr) throws Exception {
+		int count = service.remove(Codegroup);
+
+		if (count != 0) {
+			rttr.addFlashAttribute("msg", "SUCCES");
+		} else {
+			rttr.addFlashAttribute("msg", "Delete FAIL");
+		}
+
+		return "redirect:/codegroup/list";
+	}
+
 }

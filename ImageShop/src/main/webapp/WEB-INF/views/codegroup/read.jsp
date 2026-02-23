@@ -67,8 +67,8 @@
       });
       <!-- $("#btnRegister").on("click", funtion():전송버튼을 클릭할 때 작동하는 핸들러정의) -->
       $("#btnRemove").on("click", function() {
-          formObj.attr("action","codegroup/remove");
-          formObj.attr("method","get");
+          formObj.attr("action","/codegroup/remove");
+          formObj.attr("method","post");
           formObj.submit();
       });
       $("#btnList").on("click", function() { 

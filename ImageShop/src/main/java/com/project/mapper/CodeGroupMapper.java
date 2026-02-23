@@ -13,4 +13,7 @@ public interface CodeGroupMapper {
 	
 	// 상세 페이지 
 	public CodeGroup read(CodeGroup codeGroup) throws Exception;
+	
+	// 삭제 처리
+	public int remove(CodeGroup codeGroup)throws Exception;
 }

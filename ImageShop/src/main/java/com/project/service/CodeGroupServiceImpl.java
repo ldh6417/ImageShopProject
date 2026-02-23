@@ -27,4 +27,9 @@ public class CodeGroupServiceImpl implements CodeGroupService {
 	public CodeGroup read(CodeGroup codeGroup) throws Exception {
 		return mapper.read(codeGroup);
 	}
+
+	@Override
+	public int remove(CodeGroup codeGroup) throws Exception {
+		return mapper.remove(codeGroup);
+	}
 }

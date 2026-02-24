@@ -19,39 +19,45 @@
 	<!-- 메인화면 작업시작 -->
 	<div align="center">
 		<h2>
-			<spring:message code="codegroup.header.list" />
+			<spring:message code="codedetail.header.list" />
 		</h2>
-		<a href="/codegroup/register"><spring:message code="action.new" /></a>
-		<table border="1">
+		<a href="register"><spring:message code="action.new" /></a>
+		<table border="1" class="codedetail_table">
 			<tr>
 				<th align="center" width="160"><spring:message
-						code="codegroup.groupCode" /></th>
+						code="codedetail.groupCode" /></th>
 				<th align="center" width="160"><spring:message
-						code="codegroup.groupName" /></th>
+						code="codedetail.codeValue" /></th>
+				<th align="center" width="160"><spring:message
+						code="codedetail.codeName" /></th>
+				<th align="center" width="160"><spring:message
+						code="codedetail.sortSeq" /></th>
 				<th align="center" width="180"><spring:message
-						code="codegroup.regdate" /></th>
+						code="codedetail.regdate" /></th>
 			</tr>
 			<c:choose>
 				<c:when test="${empty list}">
 					<tr>
-						<td colspan="3"><spring:message code="common.listEmpty" /></td>
+						<td colspan="5"><spring:message code="common.listEmpty" /></td>
 					</tr>
 				</c:when>
 				<c:otherwise>
-					<c:forEach items="${list}" var="codeGroup">
+					<c:forEach items="${list}" var="codeDetail">
 						<tr>
-							<td align="center">${codeGroup.groupCode}</td>
+							<td align="center">${codeDetail.groupCode}</td>
+							<td align="center">${codeDetail.codeValue}</td>
 							<td align="left"><a
-								href="/codegroup/read?groupCode=${codeGroup.groupCode}">${codeGroup.groupName}
-							</a></td>
+								href="/codedetail/read?groupCode=${codeDetail.groupCode}&codeValue=${codeDetail.codeValue}">
+								${codeDetail.codeName}</a>
+							</td>
+							<td align="center">${codeDetail.sortSeq}</td>
 							<td align="center"><fmt:formatDate
-									pattern="yyyy-MM-dd HH:mm" value="${codeGroup.regDate}" /></td>
+									pattern="yyyy-MM-dd HH:mm" value="${codeDetail.regDate}" /></td>
 						</tr>
 					</c:forEach>
 				</c:otherwise>
 			</c:choose>
 		</table>
-
 	</div>
 	<!-- 메인화면 작업끝 -->
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
@@ -61,8 +67,8 @@
 		var result = "${msg}";
 		if (result === "SUCCESS") {
 			alert("<spring:message code='common.processSuccess' />");
-		}else if(result === "FAIL"){
-			alert("삭제처리 실패");
+		} else if (result === "FAIL") {
+			alert("처리내용 실패");
 		}
 	</script>
 </body>

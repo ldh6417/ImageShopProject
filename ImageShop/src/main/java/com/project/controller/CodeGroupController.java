@@ -7,10 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
 import com.project.domain.CodeGroup;
 import com.project.service.CodeGroupService;
-
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -48,38 +46,38 @@ public class CodeGroupController {
 		model.addAttribute("list", service.list());
 	}
 
-	// 코드 그룹 상세 페이지
+	// 코드그룹 상세페이지요청
 	@GetMapping("/read")
-	public void read(CodeGroup Codegroup, Model model) throws Exception {
-		model.addAttribute(service.read(Codegroup));
+	public void read(CodeGroup codeGroup, Model model) throws Exception {
+		model.addAttribute(service.read(codeGroup));
 	}
 
-	// 코드 그룹 삭제 처리 요청
+	// 코드그룹 삭제처리요청
 	@PostMapping("/remove")
-	public String remove(CodeGroup Codegroup, RedirectAttributes rttr) throws Exception {
-		int count = service.remove(Codegroup);
+	public String remove(CodeGroup codeGroup, RedirectAttributes rttr) throws Exception {
+		int count = service.remove(codeGroup);
 
 		if (count != 0) {
-			rttr.addFlashAttribute("msg", "SUCCES");
+			rttr.addFlashAttribute("msg", "SUCCESS");
 		} else {
-			rttr.addFlashAttribute("msg", "Delete FAIL");
+			rttr.addFlashAttribute("msg", "FAIL");
 		}
-
 		return "redirect:/codegroup/list";
 	}
 
-	// 코드 그룹 수정페이지 요청
+	// 코드그룹 수정페이지요청
 	@GetMapping("/modify")
-	public void modifyForm(CodeGroup Codegroup, Model model) throws Exception {
-		model.addAttribute(service.read(Codegroup));
+	public void modifyForm(CodeGroup codeGroup, Model model) throws Exception {
+		model.addAttribute(service.read(codeGroup));
 	}
 
-	// 코드 그룹 수정등록페이지 요청
+	// 코드그룹 수정등록페이지요청
 	@PostMapping("/modify")
-	public String modify(CodeGroup Codegroup, RedirectAttributes rttr) throws Exception {
-		int count = service.modify(Codegroup);
+	public String modify(CodeGroup codeGroup, RedirectAttributes rttr) throws Exception {
+		int count = service.modify(codeGroup); 
+		
 		if (count != 0) {
-			rttr.addFlashAttribute("msg", "SUCCES");
+			rttr.addFlashAttribute("msg", "SUCCESS");
 		} else {
 			rttr.addFlashAttribute("msg", "FAIL");
 		}

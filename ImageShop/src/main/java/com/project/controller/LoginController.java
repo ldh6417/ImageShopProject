@@ -28,6 +28,6 @@ public class LoginController {
 	@RequestMapping("/logout")
 	public String logoutForm() {
 		log.info("logoutForm");
-		return "logoutForm";
+		return "auth/logoutForm";
 	}
 }

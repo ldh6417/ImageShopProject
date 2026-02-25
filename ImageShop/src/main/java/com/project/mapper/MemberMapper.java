@@ -15,6 +15,8 @@ public interface MemberMapper {
 
 	public Member read(Member member) throws Exception;
 
+	public Member readByUserId(Member member) throws Exception;
+
 	public int modify(Member member) throws Exception;
 
 	public void deleteAuth(Member member) throws Exception;
@@ -23,6 +25,6 @@ public interface MemberMapper {
 
 	public int remove(Member member) throws Exception;
 
-	public int countAll()throws Exception;
+	public int countAll() throws Exception;
 
 }

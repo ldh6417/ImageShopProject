@@ -23,7 +23,7 @@
 		<h2>
 			<spring:message code="user.header.modify" />
 		</h2>
-		<form:form modelAttribute="member" action="/user/modify2" method="post">
+		<form:form modelAttribute="member" action="/user/modify" method="post">
 			<form:hidden path="userNo" />
 			<form:hidden path="userId" />
 			<table>
@@ -72,10 +72,10 @@
 		</form:form>
 
 		<div>
-			<button type="submit" id="btnModify">
+			<button type="submit" id="btnEdit">
 				<spring:message code="action.modify" />
 			</button>
-			<sec:authorize acccess= "hasRole('ROLEADMIN')">
+			<sec:authorize access= "hasRole('ROLE_ADMIN')">
 			<button type="submit" id="btnList">
 				<spring:message code="action.list" />
 			</button>
@@ -94,13 +94,13 @@
 		$(document).ready(function() {
 			let formObj = $("#member");
 
-			$("#btnEdit").on("click", function() {S
+			$("#btnEdit").on("click", function() {
 				formObj.submit();
 			});
 
 
 			$("#btnList").on("click", function() {
-				self.location = "list";
+				self.location = "/user/list";
 			});
 		});
 	</script>

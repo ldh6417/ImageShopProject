@@ -90,7 +90,7 @@ public class MemberController {
 	}
 
 	// 수정 페이지
-	@PostMapping("/modify")
+	@GetMapping("/modify")
 	public void modifyForm(Member member, Model model) throws Exception {
 		// 직업코드 목록을 조회하여 뷰에 전달
 		String groupCode = "A00";
@@ -111,6 +111,48 @@ public class MemberController {
 		}
 		return "redirect:/user/list";
 
+	}
+
+	// 삭제 처리
+	@PostMapping("/remove")
+	public String remove(Member member, RedirectAttributes rttr) throws Exception {
+		int count = service.remove(member);
+
+		if (count != 0) {
+			rttr.addFlashAttribute("msg", "SUCCESS");
+		} else {
+			rttr.addFlashAttribute("msg", "FAILED");
+		}
+		return "redirect:/user/list";
+
+	}
+
+	// 최초 관리자를 생성하는 화면요청
+	@GetMapping("/setup")
+	public String setupAdminForm(Member member, Model model) throws Exception {
+		// 회원 테이블 데이터 건수를 확인하여 최초 관리자 등록 페이지를 표시한다.
+		if (service.countAll() == 0) {
+			return "user/setup";
+		}
+		// 회원 테이블에 데이터가 존재하면 최초 관리자를 생성할 수 없으므로 실패 페이지로 이동한다.
+		return "user/setupFailure";
+	}
+
+	// 회원 테이블에 데이터가 없으면 최초 관리자를 생성한다.
+	@PostMapping("/setup")
+	public String setupAdmin(Member member, RedirectAttributes rttr) throws Exception {
+		// 회원 테이블 데이터 건수를 확인하여 빈 테이블이면 최초 관리자를 생성한다.
+		if (service.countAll() == 0) {
+			String inputPassword = member.getUserPw();
+			member.setUserPw(passwordEncoder.encode(inputPassword));
+			member.setJob("00");
+
+			service.setupAdmin(member);
+			rttr.addFlashAttribute("userName", member.getUserName());
+			return "redirect:/user/registerSuccess";
+		}
+		// 회원 테이블에 데이터가 존재하면 최초 관리자를 생성할 수 없으므로 실패 페이지로 이동한다.
+		return "redirect:/user/setupFailure";
 	}
 
 	// 등록 성공 페이지

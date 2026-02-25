@@ -10,4 +10,6 @@ public	int register(Member member) throws Exception;
 
 public List<Member> list()throws Exception;
 
+public Member read(Member member)throws Exception;
+
 }

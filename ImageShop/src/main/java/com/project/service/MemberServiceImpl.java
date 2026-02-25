@@ -34,4 +34,10 @@ public class MemberServiceImpl implements MemberService {
 	public List<Member> list() throws Exception {
 		return mapper.list();
 	}
+
+	@Override
+	public Member read(Member member) throws Exception {
+		// TODO Auto-generated method stub
+		return mapper.read(member);
+	}
 }

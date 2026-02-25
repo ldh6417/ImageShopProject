@@ -13,4 +13,6 @@ public interface MemberMapper {
 
 	public List<Member> list()throws Exception;
 
+	public Member read(Member member)throws Exception;
+
 }

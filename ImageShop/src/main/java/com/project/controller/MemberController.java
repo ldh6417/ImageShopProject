@@ -78,6 +78,17 @@ public class MemberController {
 		model.addAttribute("list", service.list());
 	}
 
+	// 상세 페이지
+	@GetMapping("/read")
+	public void read(Member member, Model model) throws Exception {
+		// 직업코드 목록을 조회하여 뷰에 전달
+		String groupCode = "A00";
+		List<CodeLabelValue> jobList = codeService.getCodeList(groupCode);
+		
+		model.addAttribute("jobList", jobList);
+		model.addAttribute(service.read(member));
+	}
+
 	// 등록 성공 페이지
 	@GetMapping("/registerSuccess")
 	public void registerSuccess(Model model) throws Exception {

@@ -84,9 +84,33 @@ public class MemberController {
 		// 직업코드 목록을 조회하여 뷰에 전달
 		String groupCode = "A00";
 		List<CodeLabelValue> jobList = codeService.getCodeList(groupCode);
-		
+
 		model.addAttribute("jobList", jobList);
 		model.addAttribute(service.read(member));
+	}
+
+	// 수정 페이지
+	@PostMapping("/modify")
+	public void modifyForm(Member member, Model model) throws Exception {
+		// 직업코드 목록을 조회하여 뷰에 전달
+		String groupCode = "A00";
+		List<CodeLabelValue> jobList = codeService.getCodeList(groupCode);
+		model.addAttribute("jobList", jobList);
+		model.addAttribute(service.read(member));
+	}
+
+	// 수정 등록처리요청
+	@PostMapping("/modify")
+	public String modifyForm(Member member, RedirectAttributes rttr) throws Exception {
+		int count = service.modify(member);
+
+		if (count != 0) {
+			rttr.addFlashAttribute("msg", "SUCCESS");
+		} else {
+			rttr.addFlashAttribute("msg", "FAILED");
+		}
+		return "redirect:/user/list";
+
 	}
 
 	// 등록 성공 페이지

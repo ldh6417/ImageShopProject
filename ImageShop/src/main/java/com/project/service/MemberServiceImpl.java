@@ -12,21 +12,21 @@ import com.project.mapper.MemberMapper;
 
 @Service
 public class MemberServiceImpl implements MemberService {
-	@Autowired 
+	@Autowired
 	private MemberMapper mapper;
-	
+
 	@Transactional
 	@Override
 	public int register(Member member) throws Exception {
 		// TODO Auto-generated method stub
-		int count =  mapper.register(member);
-		
+		int count = mapper.register(member);
+
 		if (count != 0) {
-			// 회원 권한 생성 
-			MemberAuth memberAuth = new MemberAuth(); 
-			memberAuth.setAuth("ROLE_MEMBER"); 
-			mapper.createAuth(memberAuth); 
-		} 
+			// 회원 권한 생성
+			MemberAuth memberAuth = new MemberAuth();
+			memberAuth.setAuth("ROLE_MEMBER");
+			mapper.createAuth(memberAuth);
+		}
 		return count;
 	}
 
@@ -37,7 +37,29 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public Member read(Member member) throws Exception {
-		// TODO Auto-generated method stub
 		return mapper.read(member);
 	}
+
+	@Override
+	public int modify(Member member) throws Exception {
+		mapper.update(member);
+		// 회원권한 수정
+		int userNo = member.getUserNo();
+		// 회원권한 삭제
+		mapper.deleteAuth(userNo);
+		return mapper.modify(member);
+		List<MemberAuth> authList = member.getAuthList();
+		for (int i = 0; i < authList.size(); i++) {
+			MemberAuth memberAuth = authList.get(i);
+			String auth = memberAuth.getAuth();
+
+			if (auth == null || auth.trim().length() == 0) {
+				continue;
+			}
+			// 변경된 회원권한 추가
+			memberAuth.setUserNo(userNo);
+			mapper.modifyAuth(memberAuth);
+		}
+	}
+
 }

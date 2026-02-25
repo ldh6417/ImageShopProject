@@ -30,7 +30,7 @@
 				<th align="center" width="60"><spring:message code="user.no" /></th>
 				<th align="center" width="80"><spring:message
 						code="user.userId" /></th>
-				<th align="center" width="300"><spring:message
+				<th class="col-password" width="300"><spring:message
 						code="user.userPw" /></th>
 				<th align="center" width="100"><spring:message
 						code="user.userName" /></th>
@@ -49,11 +49,13 @@
 					<c:forEach items="${list}" var="member">
 						<tr>
 							<td align="center">${member.userNo}</td>
-							<td align="center"><a href='/user/read?userNo=${member.userNo}'>${member.userId}</a></td>
-							<td align="left">${member.userPw}</td>
+							<td align="center"><a
+								href='/user/read?userNo=${member.userNo}'>${member.userId}</a></td>
+							<td class="col-password" align="left">${member.userPw}</td>
 							<td align="right">${member.userName}</td>
 							<td align="right">${member.job}</td>
-							<td align="center"><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${member.regDate}" /></td>
+							<td align="center"><fmt:formatDate
+									pattern="yyyy-MM-dd HH:mm" value="${member.regDate}" /></td>
 						</tr>
 					</c:forEach>
 				</c:otherwise>

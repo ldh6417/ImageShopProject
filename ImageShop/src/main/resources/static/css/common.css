@@ -1,0 +1,89 @@
+/* =========================
+   공통 레이아웃
+========================= */
+body {
+  margin: 0;
+  font-family: 'Pretendard', Arial, sans-serif;
+  background-color: #f7f8fa;
+}
+
+/* =========================
+   HEADER
+========================= */
+.app-header {
+  background: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.app-header__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 14px 20px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.app-header__menu {
+  display: flex;
+  gap: 18px;
+}
+
+.app-header__link {
+  text-decoration: none;
+  color: #374151;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.15s ease;
+}
+
+.app-header__link:hover {
+  color: #2563eb;
+  font-weight: 600;
+}
+
+/* =========================
+   HOME BAR
+========================= */
+.app-homebar {
+  background: #ffffff;
+}
+
+.app-homebar__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 12px 20px;
+  text-align: center;
+}
+
+.app-homebar__link {
+  text-decoration: none;
+  color: #111827;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.app-homebar__link:hover {
+  color: #2563eb;
+}
+
+/* =========================
+   FOOTER
+========================= */
+.app-footer {
+  background: #111827;
+  color: #e5e7eb;
+  margin-top: 40px;
+}
+
+.app-footer__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+}
+
+.app-footer__text {
+  margin: 0;
+  font-size: 13px;
+  letter-spacing: 0.5px;
+}

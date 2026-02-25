@@ -1,6 +1,86 @@
-@charset "UTF-8";
-
-table td {
-	background-color: orange;
+.codegroup {
+	max-width: 900px;
+	margin: 40px auto;
+	padding: 0 20px;
 	text-align: center;
+}
+
+.codegroup h2 {
+	margin-bottom: 28px;
+	font-size: 26px;
+	font-weight: 700;
+	color: #111827;
+}
+
+/* 상단 버튼 */
+.codegroup>a {
+	display: inline-block;
+	margin-bottom: 18px;
+	padding: 8px 16px;
+	background: #2563eb;
+	color: #fff;
+	text-decoration: none;
+	border-radius: 6px;
+	font-size: 14px;
+	font-weight: 600;
+}
+
+.codegroup>a:hover {
+	background: #1e4fd1;
+}
+
+/* 테이블 */
+.codegroup table {
+	width: 100%;
+	border-collapse: collapse;
+	background: #fff;
+	margin-bottom: 24px;
+}
+
+.codegroup th {
+	background: #f3f4f6;
+	padding: 12px;
+	font-weight: 600;
+	border-bottom: 1px solid #e5e7eb;
+}
+
+.codegroup td {
+	padding: 12px;
+	border-bottom: 1px solid #f1f5f9;
+}
+
+/* input */
+.codegroup input {
+	width: 100%;
+	height: 34px;
+	padding: 6px 8px;
+	border: 1px solid #d1d5db;
+	border-radius: 6px;
+}
+
+/* 버튼 영역 */
+.codegroup>div {
+	display: flex;
+	justify-content: center;
+	gap: 12px;
+}
+
+.codegroup button {
+	min-width: 110px;
+	height: 36px;
+	border: none;
+	border-radius: 6px;
+	font-weight: 600;
+	cursor: pointer;
+}
+
+/* 주요 버튼 */
+#btnRegister, #btnModify, #btnEdit {
+	background: #2563eb;
+	color: #fff;
+}
+
+/* 보조 */
+#btnList, #btnRemove {
+	background: #e5e7eb;
 }

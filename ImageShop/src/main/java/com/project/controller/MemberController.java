@@ -72,6 +72,12 @@ public class MemberController {
 
 	}
 
+	// 목록 페이지
+	@GetMapping("/list")
+	public void list(Model model) throws Exception {
+		model.addAttribute("list", service.list());
+	}
+
 	// 등록 성공 페이지
 	@GetMapping("/registerSuccess")
 	public void registerSuccess(Model model) throws Exception {

@@ -1,0 +1,90 @@
+/* ============================= */
+/* user 공통 영역 */
+/* ============================= */
+.user {
+	width: 900px;
+	margin: 40px auto;
+	text-align: center;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+/* 제목 */
+.user h2 {
+	margin-bottom: 25px;
+	font-size: 26px;
+	font-weight: bold;
+}
+
+/* ============================= */
+/* 테이블 영역 */
+/* ============================= */
+.user_table {
+	width: 100%;
+	border-collapse: collapse;
+	margin: 0 auto 20px auto;
+	background-color: #fff;
+}
+
+.user_table td {
+	padding: 10px;
+	border: 1px solid #ddd;
+	text-align: left;
+}
+
+/* 첫 번째 컬럼 라벨 */
+.user_table td:first-child {
+	width: 160px;
+	background-color: #f4f6f9;
+	font-weight: bold;
+}
+
+/* 입력창 */
+.user input, .user select {
+	width: 95%;
+	padding: 6px 8px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	font-size: 14px;
+}
+
+/* ============================= */
+/* 버튼 영역 */
+/* ============================= */
+.user button {
+	margin: 10px 6px;
+	padding: 8px 18px;
+	border: none;
+	border-radius: 4px;
+	background-color: #2c3e50;
+	color: #fff;
+	font-size: 14px;
+	cursor: pointer;
+}
+
+.user button:hover {
+	background-color: #1a252f;
+}
+
+/* ============================= */
+/* 링크 (success/fail 화면) */
+/* ============================= */
+.user a {
+	display: inline-block;
+	margin-top: 15px;
+	padding: 6px 14px;
+	background-color: #34495e;
+	color: #fff;
+	text-decoration: none;
+	border-radius: 4px;
+}
+
+.user a:hover {
+	background-color: #22313f;
+}
+
+/* ============================= */
+/* 에러 메시지 */
+/* ============================= */
+.user font[color="red"] {
+	font-size: 13px;
+}

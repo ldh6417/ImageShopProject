@@ -1,0 +1,66 @@
+/* codedetail 공통 래퍼 */
+.codedetail {
+	width: 900px;
+	margin: 40px auto;
+	text-align: center;
+}
+
+/* 제목 */
+.codedetail h2 {
+	margin-bottom: 20px;
+	font-size: 26px;
+	font-weight: bold;
+}
+
+/* 신규 버튼 */
+.codedetail a {
+	display: inline-block;
+	margin-bottom: 15px;
+	padding: 6px 14px;
+	background-color: #2c3e50;
+	color: #fff;
+	text-decoration: none;
+	border-radius: 4px;
+	font-size: 14px;
+}
+
+.codedetail a:hover {
+	background-color: #1a252f;
+}
+
+/* 테이블 */
+.codedetail_table {
+	width: 100%;
+	border-collapse: collapse;
+	background: #fff;
+}
+
+.codedetail_table th {
+	background-color: #f4f6f9;
+	padding: 10px;
+	border: 1px solid #ddd;
+}
+
+.codedetail_table td {
+	padding: 9px;
+	border: 1px solid #ddd;
+}
+
+.codedetail_table tr:hover {
+	background-color: #f9fbff;
+}
+
+/* 버튼 공통 */
+.codedetail button {
+	margin: 15px 5px;
+	padding: 7px 18px;
+	border: none;
+	background-color: #34495e;
+	color: white;
+	border-radius: 4px;
+	cursor: pointer;
+}
+
+.codedetail button:hover {
+	background-color: #22313f;
+}

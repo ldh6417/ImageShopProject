@@ -13,6 +13,7 @@
 <link rel="stylesheet" href="/css/style.css">
 -->
 <link rel="stylesheet" href="/css/home.css">
+
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/common/header.jsp" />

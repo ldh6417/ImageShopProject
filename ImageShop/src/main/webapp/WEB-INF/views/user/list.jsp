@@ -17,7 +17,7 @@
 	<jsp:include page="/WEB-INF/views/common/menu.jsp" />
 
 	<!-- 메인화면 작업시작 -->
-	<div class="user">
+	<div class="user_list">
 		<h2>
 			<spring:message code="user.header.list" />
 		</h2>
@@ -47,7 +47,7 @@
 
 				<c:otherwise>
 					<c:forEach items="${list}" var="member">
-						<<tr>
+						<tr>
 							<td align="center">${member.userNo}</td>
 							<td align="center"><a href='/user/read?userNo=${member.userNo}'>${member.userId}</a></td>
 							<td align="left">${member.userPw}</td>

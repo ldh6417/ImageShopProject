@@ -4,7 +4,15 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 <link rel="stylesheet" href="/css/common.css">
 
-<div align="right">
+
+
+<div class="app-homebar">
+	<div class="app-homebar__inner">
+		<a class="app-homebar__link" href="/"> <spring:message
+				code="header.home" />
+		</a>
+	</div>
+	<div align="right">
 	<table>
 		<tr>
 			<!-- 로그인을 하지 않은 경우 로그인 페이지로 이동할 수 있게 한다. -->
@@ -25,12 +33,5 @@
 		</tr>
 	</table>
 </div>
-
-<div class="app-homebar">
-	<div class="app-homebar__inner">
-		<a class="app-homebar__link" href="/"> <spring:message
-				code="header.home" />
-		</a>
-	</div>
 </div>
 <hr>

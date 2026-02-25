@@ -19,7 +19,7 @@
 	<jsp:include page="/WEB-INF/views/common/menu.jsp" />
 
 	<!-- 메인 -->
-	<div class="user">
+	<div class="user_register">
 		<h2>
 			<spring:message code="user.header.register" />
 		</h2>

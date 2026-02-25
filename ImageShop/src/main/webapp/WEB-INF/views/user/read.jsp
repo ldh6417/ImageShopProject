@@ -19,7 +19,7 @@
 	<jsp:include page="/WEB-INF/views/common/menu.jsp" />
 
 	<!-- 메인 -->
-	<div class="user">
+	<div class="user_read">
 		<h2>
 			<spring:message code="user.header.read" />
 		</h2>

@@ -17,7 +17,8 @@
 <body>
     <jsp:include page="/WEB-INF/views/common/header.jsp" />
     <jsp:include page="/WEB-INF/views/common/menu.jsp" />
-    <div align="center">
+    
+    <div align="center" class="register_page">
         <h2>
             <spring:message code="common.joinMemberFailed"    arguments="${userName}" />
         </h2>

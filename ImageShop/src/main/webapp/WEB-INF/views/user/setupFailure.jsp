@@ -17,7 +17,7 @@
 <body>
 	<jsp:include page="/WEB-INF/views/common/header.jsp" />
 	<jsp:include page="/WEB-INF/views/common/menu.jsp" />
-	<div align="center">
+	<div align="center" class="user_setup">
 		<h2>
 			<spring:message code="common.cannotSetupAdmin"/>
 		</h2>

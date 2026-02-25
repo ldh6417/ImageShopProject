@@ -16,7 +16,7 @@
 	<jsp:include page="/WEB-INF/views/common/header.jsp" />
 	<jsp:include page="/WEB-INF/views/common/menu.jsp" />
 
-	<div class="codegroup">
+	<div class="codegroup_list">
 		<h2>
 			<spring:message code="codegroup.header.list" />
 		</h2>

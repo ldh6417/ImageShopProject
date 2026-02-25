@@ -1,89 +1,118 @@
 /* =========================
-   공통 레이아웃
+   전체 기본
 ========================= */
 body {
   margin: 0;
-  font-family: 'Pretendard', Arial, sans-serif;
-  background-color: #f7f8fa;
-}
-
-/* =========================
-   HEADER
-========================= */
-.app-header {
+  padding: 0;
+  font-family: "Noto Sans KR", Arial, sans-serif;
   background: #ffffff;
-  border-bottom: 1px solid #e5e7eb;
+  color: #111;
 }
 
-.app-header__inner {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 14px 20px;
-  display: flex;
-  justify-content: flex-end;
-}
-
-.app-header__menu {
-  display: flex;
-  gap: 18px;
-}
-
-.app-header__link {
+a {
   text-decoration: none;
-  color: #374151;
-  font-size: 14px;
+  color: #007acc;
   font-weight: 500;
-  transition: all 0.15s ease;
 }
 
-.app-header__link:hover {
-  color: #2563eb;
-  font-weight: 600;
+a:hover {
+  color: #005fa3;
 }
 
 /* =========================
-   HOME BAR
+   HEADER (homebar)
 ========================= */
 .app-homebar {
+  width: 100%;
   background: #ffffff;
+  border-bottom: 1px solid #e3f2fd;
+  box-shadow: 0 2px 8px rgba(0, 170, 255, 0.06);
 }
 
 .app-homebar__inner {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 12px 20px;
-  text-align: center;
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .app-homebar__link {
-  text-decoration: none;
-  color: #111827;
-  font-size: 15px;
+  font-size: 20px;
+  font-weight: 700;
+  color: #007acc;
+}
+
+/* 우측 로그인 영역 */
+.app-homebar table {
+  border-collapse: collapse;
+}
+
+.app-homebar td {
+  padding-left: 12px;
+  font-size: 14px;
+}
+
+/* =========================
+   MENU
+========================= */
+.app-menu {
+  width: 100%;
+  background: #f5fbff;
+  border-bottom: 1px solid #d6efff;
+}
+
+.app-menu table {
+  margin: 0 auto;
+  border-collapse: collapse;
+}
+
+.app-menu td {
+  padding: 12px 16px;
+  font-size: 14px;
   font-weight: 600;
 }
 
-.app-homebar__link:hover {
-  color: #2563eb;
+/* 메뉴 hover */
+.app-menu a {
+  padding: 6px 10px;
+  border-radius: 6px;
+  transition: all 0.18s ease;
+}
+
+.app-menu a:hover {
+  background: #e3f2fd;
+  color: #005fa3;
 }
 
 /* =========================
    FOOTER
 ========================= */
 .app-footer {
-  background: #111827;
-  color: #e5e7eb;
-  margin-top: 40px;
+  margin-top: 60px;
+  background: #f8fcff;
+  border-top: 1px solid #e3f2fd;
 }
 
 .app-footer__inner {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 20px;
+  padding: 24px 20px;
   text-align: center;
 }
 
 .app-footer__text {
   margin: 0;
   font-size: 13px;
-  letter-spacing: 0.5px;
+  color: #666;
+}
+
+/* =========================
+   구분선 정리
+========================= */
+hr {
+  border: none;
+  border-top: 1px solid #eef7ff;
+  margin: 0;
 }

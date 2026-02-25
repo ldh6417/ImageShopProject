@@ -17,7 +17,7 @@
 	<jsp:include page="/WEB-INF/views/common/menu.jsp" />
 
 	<!-- 메인화면 작업시작 -->
-	<div class="codedetail">
+	<div class="codedetail_list">
 		<h2>
 			<spring:message code="codedetail.header.list" />
 		</h2>

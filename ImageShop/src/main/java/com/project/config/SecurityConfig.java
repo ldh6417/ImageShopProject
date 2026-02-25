@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -27,7 +28,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Configuration
 @EnableWebSecurity
-//@EnableMethodSecurity(prePostEnabled=true)
+@EnableMethodSecurity(prePostEnabled=true, securedEnabled=true )
 public class SecurityConfig {
 
 	@Autowired
@@ -42,17 +43,19 @@ public class SecurityConfig {
 
 		// 2.시큐리티 인가정책
 		// Spring Security 6.0 버전부터는 DispatcherType에 대해서도 보안 검사를 수행하는 것이 기본값이 되었다.
+		
 		httpSecurity.authorizeHttpRequests(auth -> auth.dispatcherTypeMatchers(DispatcherType.FORWARD).permitAll()
 				.requestMatchers("/accessError", "/login", "/logout", "/css/**", "/js/**", "/error").permitAll()
-				.requestMatchers("/board/**").authenticated() // 게시판: 인증(로그인)
-				.requestMatchers("/manager/**").hasRole("MANAGER") // 메니저기능: 인가(MANAGER)
-				.requestMatchers("/admin/**").hasRole("ADMIN") // 메니저기능: 인가(MANAGER)
+				//.requestMatchers("/board/**").authenticated() // 게시판: 인증(로그인)
+				//.requestMatchers("/manager/**").hasRole("MANAGER") // 메니저기능: 인가(MANAGER)
+				//.requestMatchers("/admin/**").hasRole("ADMIN") // 메니저기능: 인가(MANAGER)
 				// .requestMatchers("/board/register").hasRole("MEMBER") // 게시판 등록: 회원만
 				// .requestMatchers("/notice/list").permitAll() // 공지사항 목록: 누구나
 				// .requestMatchers("/notice/register").hasRole("ADMIN") // 공지사항 등록: 관리자만
 				.anyRequest().permitAll() // 그 외 모든 요청은 인증, 인가가 필요없다.
 		);
-
+	
+		
 		// 3.접근거부시 예외처리 설정 (/accessError 페이지로 이동)
 		// httpSecurity.exceptionHandling(exception ->
 		// exception.accessDeniedPage("/accessError"));

@@ -19,13 +19,8 @@
 	<jsp:include page="/WEB-INF/views/common/header.jsp" />
 	<jsp:include page="/WEB-INF/views/common/menu.jsp" />
 
-	<form method="post" action="auth/logout">
+	<form method="post" action="/auth/logout">
 		<table>
-			<tr>
-				<td></td>
-				<td><input type="checkbox" name="remember-me"> <spring:message
-						code="auth.rememberMe" /></td>
-			</tr>
 			<tr>
 				<td colspan="2" align="center"><button>
 						<spring:message code="action.log" />

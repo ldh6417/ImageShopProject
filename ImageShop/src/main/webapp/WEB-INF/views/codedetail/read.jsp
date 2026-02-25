@@ -15,7 +15,7 @@
 	<jsp:include page="/WEB-INF/views/common/header.jsp" />
 	<jsp:include page="/WEB-INF/views/common/menu.jsp" />
 
-	<div class="codedetail">
+	<div class="codedetail_read">
 		<h2>
 			<spring:message code="codedetail.header.read" />
 		</h2>
@@ -67,9 +67,11 @@
 			let formObj = $("#codeDetail");
 
 			$("#btnEdit").on("click", function() {
-				formObj.attr("action", "/codedetail/modify");
-				formObj.attr("method", "get");
-				formObj.submit();
+				let groupCode = $("#groupCode");
+				let groupCodeValue = groupCode.val();
+				let codeValue = $("#codeValue");
+				let codeValueValue = codeValue.val();
+				self.location = "modify?groupCode="+groupCodeValue+"&"+"codeValue="+codeValueValue
 			});
 
 			$("#btnRemove").on("click", function() {

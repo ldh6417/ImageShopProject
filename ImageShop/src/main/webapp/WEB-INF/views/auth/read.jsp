@@ -10,7 +10,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Image Shop</title>
-<link rel="stylesheet" href="/css/user.css">
+<link rel="stylesheet" href="/css/auth.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
@@ -19,7 +19,7 @@
 	<jsp:include page="/WEB-INF/views/common/menu.jsp" />
 
 	<!-- 메인 -->
-	<div class="user">
+	<div class="auth_read">
 		<h2>
 			<spring:message code="user.header.read" />
 		</h2>
@@ -99,19 +99,19 @@
 			let formObj = $("#member");
 
 			$("#btnEdit").on("click", function() {
-				let userNo = $("#userNo");
-				let userNoValue = userNo.val();
-				self.location = "modify?userNo=" + userNoValue;
+				formObj.attr("action", "/user/modify");
+				formObj.attr("method", "post");
+				formObj.submit();
 			});
 
 			$("#btnRemove").on("click", function() {
 				formObj.attr("action", "/user/remove");
-				formObj.attr("method", "get");
+				formObj.attr("method", "post");
 				formObj.submit();
 			});
 
 			$("#btnList").on("click", function() {
-				self.location = "list";
+				self.location = "/user/list";
 			});
 		});
 	</script>

@@ -11,7 +11,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Image Shop</title>
-<link rel="stylesheet" href="/css/user.css">
+<link rel="stylesheet" href="/css/auth.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
@@ -20,6 +20,7 @@
 	<jsp:include page="/WEB-INF/views/common/menu.jsp" />
 
 	<form method="post" action="/auth/logout">
+	<div class="auth_logout">
 		<table>
 			<tr>
 				<td colspan="2" align="center"><button>
@@ -27,6 +28,7 @@
 					</button></td>
 			</tr>
 		</table>
+		</div>
 		<sec:csrfInput />
 	</form>
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />

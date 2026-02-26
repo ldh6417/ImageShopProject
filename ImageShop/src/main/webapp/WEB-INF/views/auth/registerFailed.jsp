@@ -11,13 +11,14 @@
 <head>
 <meta charset="UTF-8">
 <title>Image Shop</title>
-<link rel="stylesheet" href="/css/user.css">
+<link rel="stylesheet" href="/css/auth.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
     <jsp:include page="/WEB-INF/views/common/header.jsp" />
     <jsp:include page="/WEB-INF/views/common/menu.jsp" />
-    <div align="center">
+    
+    <div align="center" class="auth_registerFailed">
         <h2>
             <spring:message code="common.joinMemberFailed"    arguments="${userName}" />
         </h2>

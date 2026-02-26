@@ -1,0 +1,190 @@
+/* ======================================
+   공통 카드 컨테이너 (auth 계열)
+====================================== */
+.auth_list,
+.auth_modify,
+.auth_read,
+.auth_register,
+.auth_setUp,
+.auth_registerFailed,
+.auth_registerSuccess,
+.auth_setupFailure {
+    width: 950px;
+    margin: 40px auto;
+    padding: 30px 40px;
+    background: #ffffff;
+    border: 1px solid #e3f2fd;
+    border-radius: 12px;
+    box-shadow: 0 4px 14px rgba(0, 170, 255, 0.08);
+}
+
+/* ======================================
+   제목
+====================================== */
+.auth_list h2,
+.auth_modify h2,
+.auth_read h2,
+.auth_register h2,
+.auth_setUp h2,
+.auth_registerFailed h2,
+.auth_registerSuccess h2,
+.auth_setupFailure h2 {
+    margin-bottom: 25px;
+    font-size: 24px;
+    font-weight: 700;
+    color: #007acc;
+    border-bottom: 2px solid #e3f2fd;
+    padding-bottom: 10px;
+}
+
+/* ======================================
+   테이블 기본
+====================================== */
+.auth_list table,
+.auth_modify table,
+.auth_read table,
+.auth_register table,
+.auth_setUp table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+/* ======================================
+   리스트 테이블
+====================================== */
+.auth_list table {
+    table-layout: fixed;
+}
+
+.auth_list th {
+    background: #e3f2fd;
+    color: #0d47a1;
+    padding: 12px 10px;
+    font-weight: 700;
+    border-bottom: 2px solid #b3e5fc;
+}
+
+.auth_list td {
+    padding: 11px 10px;
+    border-bottom: 1px solid #eef7ff;
+}
+
+/* hover */
+.auth_list tr:hover td {
+    background: #f5fbff;
+}
+
+/* ======================================
+   폼 영역
+====================================== */
+.auth_modify td,
+.auth_read td,
+.auth_register td,
+.auth_setUp td {
+    padding: 10px 8px;
+    vertical-align: middle;
+}
+
+/* 라벨 셀 */
+.auth_modify td:first-child,
+.auth_read td:first-child,
+.auth_register td:first-child,
+.auth_setUp td:first-child {
+    font-weight: 600;
+    color: #222;
+    width: 180px;
+}
+
+/* ======================================
+   input / select
+====================================== */
+.auth_modify input[type="text"],
+.auth_read input[type="text"],
+.auth_register input[type="text"],
+.auth_setUp input[type="text"],
+.auth_modify select,
+.auth_read select,
+.auth_register select {
+    width: 100%;
+    padding: 8px 10px;
+    border: 1px solid #cfefff;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: all 0.2s ease;
+    background: #ffffff;
+}
+
+/* focus */
+.auth_modify input[type="text"]:focus,
+.auth_register input[type="text"]:focus,
+.auth_setUp input[type="text"]:focus,
+.auth_modify select:focus,
+.auth_register select:focus {
+    outline: none;
+    border-color: #4fc3f7;
+    box-shadow: 0 0 0 2px rgba(79, 195, 247, 0.15);
+}
+
+/* readonly / disabled */
+.auth_read input[readonly],
+.auth_modify input[readonly],
+.auth_read select[disabled],
+.auth_modify select[disabled] {
+    background: #f5faff;
+    color: #666;
+}
+
+/* ======================================
+   신규 등록 링크
+====================================== */
+.auth_list > a {
+    display: inline-block;
+    margin-bottom: 15px;
+    font-weight: 600;
+    color: #007acc;
+}
+
+.auth_list > a:hover {
+    color: #005fa3;
+}
+
+/* ======================================
+   버튼 영역
+====================================== */
+.auth_modify > div,
+.auth_read > div,
+.auth_register .user-btn-area,
+.auth_setUp .user-btn-area {
+    margin-top: 25px;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+/* ======================================
+   성공 / 실패 페이지 중앙 정렬
+====================================== */
+.auth_registerFailed,
+.auth_registerSuccess,
+.auth_setupFailure {
+    text-align: center;
+}
+
+.auth_registerFailed a,
+.auth_registerSuccess a,
+.auth_setupFailure a {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 18px;
+    background: #4fc3f7;
+    color: #fff;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.18s ease;
+}
+
+.auth_registerFailed a:hover,
+.auth_registerSuccess a:hover,
+.auth_setupFailure a:hover {
+    background: #007acc;
+}

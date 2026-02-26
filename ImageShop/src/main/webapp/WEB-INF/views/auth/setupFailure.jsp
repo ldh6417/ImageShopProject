@@ -11,15 +11,16 @@
 <head>
 <meta charset="UTF-8">
 <title>Image Shop</title>
-<link rel="stylesheet" href="/css/user.css">
+<link rel="stylesheet" href="/css/auth.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/common/header.jsp" />
 	<jsp:include page="/WEB-INF/views/common/menu.jsp" />
-	<div align="center">
+	
+	<div align="center" class="auth_setupFailure">
 		<h2>
-			<spring:message code="common.cannotSetupAdmin"/>
+			<spring:message code="common.cannotSetupAdmin" />
 		</h2>
 		<a href="/"><spring:message code="action.home" /></a>
 	</div>

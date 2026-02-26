@@ -11,14 +11,13 @@
 <head>
 <meta charset="UTF-8">
 <title>Image Shop</title>
-<link rel="stylesheet" href="/css/auth.css">
+<link rel="stylesheet" href="/css/user.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/common/header.jsp" />
 	<jsp:include page="/WEB-INF/views/common/menu.jsp" />
-	
-	<div align="center" class="auth_registerSuccess">
+	<div align="center" class="register_page">
 		<h2>
 			<spring:message code="common.joinMemberSuccess"
 				arguments="${userName}" />

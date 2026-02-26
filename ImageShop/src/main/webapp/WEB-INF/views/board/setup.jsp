@@ -10,7 +10,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Image Shop</title>
-<link rel="stylesheet" href="/css/user.css">
+<link rel="stylesheet" href="/css/board.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
@@ -19,7 +19,7 @@
 	<jsp:include page="/WEB-INF/views/common/menu.jsp" />
 
 	<!-- 메인 -->
-	<div class="user_setup">
+	<div class="board_setup">
 		<h2>
 			<spring:message code="user.header.register" />
 		</h2>
@@ -49,7 +49,7 @@
 			</table>
 		</form:form>
 
-		<div class="user-btn-area">
+		<div class="board-btn-area">
 			<button type="button" id="btnRegister">
 				<spring:message code="action.register" />
 			</button>

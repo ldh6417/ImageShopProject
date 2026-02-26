@@ -32,7 +32,7 @@
 					<td width="120"><a href="/user/list"><spring:message
 								code="menu.user.admin" /></a></td>
 					<!-- 회원게시판 리스트  -->
-					<td width="120"><a href="/board/list">회원게시판목록</a></td>
+					<td width="120"><a href="/board/list?page=1&sizePerPage=10">회원게시판목록</a></td>
 				</sec:authorize>
 
 				<!-- 인증완료, (인가: 회원)일때 들어갈 메뉴  -->
@@ -40,7 +40,7 @@
 					<!-- 회원게시판 등록  -->
 					<td width="120"><a href="/board/register">회원게시판등록</a></td>
 					<!-- 회원게시판 리스트  -->
-					<td width="120"><a href="/board/list">회원게시판목록</a></td>
+					<td width="120"><a href="/board/list?page=1&sizePerPage=10">회원게시판목록</a></td>
 				</sec:authorize>
 
 			</sec:authorize>

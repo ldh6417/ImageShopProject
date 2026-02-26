@@ -10,7 +10,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Image Shop</title>
-<link rel="stylesheet" href="/css/user.css">
+<link rel="stylesheet" href="/css/board.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
@@ -19,110 +19,125 @@
 	<jsp:include page="/WEB-INF/views/common/menu.jsp" />
 
 	<!-- 메인 -->
-	<div class="user_read">
+	<div class="board_readMain">
+
+
+
 		<h2>
 			<spring:message code="board.header.read" />
 		</h2>
-		<jsp:include page="/WEB-INF/views/common/header.jsp" />
-		<jsp:include page="/WEB-INF/views/common/menu.jsp" />
 
-		<!-- 🔷 메인 작업영역 -->
-		<div class="board-read">
+		<div class="board_read_inner">
 
-			<h2>
-				<spring:message code="board.header.read" />
-			</h2>
+			<form:form id="board" modelAttribute="board">
+				<form:hidden path="boardNo" />
+				<!-- 현재 페이지 번호와 페이징 크기를 숨겨진 필드 요소를 사용하여 전달한다. -->
+				<input type="hidden" id="page" name="page" value="${pgrq.page}">
+				<input type="hidden" id="sizePerPage" name="sizePerPage"
+					value="${pgrq.sizePerPage}">
 
-			<div class="board-read-inner">
+				<table class="board-table">
+					<tr>
+						<td><spring:message code="board.title" /></td>
+						<td><form:input path="title" readonly="true" /></td>
+						<td><font color="red"><form:errors path="title" /></font></td>
+					</tr>
 
-				<form:form id="board" modelAttribute="board">
-					<form:hidden path="boardNo" />
+					<tr>
+						<td><spring:message code="board.writer" /></td>
+						<td><form:input path="writer" readonly="true" /></td>
+						<td><font color="red"><form:errors path="writer" /></font></td>
+					</tr>
 
-					<table class="board-table">
-						<tr>
-							<td><spring:message code="board.title" /></td>
-							<td><form:input path="title" readonly="true" /></td>
-							<td><font color="red"><form:errors path="title" /></font></td>
-						</tr>
+					<tr>
+						<td><spring:message code="board.content" /></td>
+						<td><form:textarea path="content" readonly="true" /></td>
+						<td><font color="red"><form:errors path="content" /></font></td>
+					</tr>
+				</table>
+			</form:form>
+		</div>
+		<!-- 🔷 버튼 영역 -->
+		<div class="board-btn-area">
 
-						<tr>
-							<td><spring:message code="board.writer" /></td>
-							<td><form:input path="writer" readonly="true" /></td>
-							<td><font color="red"><form:errors path="writer" /></font></td>
-						</tr>
+			<sec:authentication property="principal" var="pinfo" />
 
-						<tr>
-							<td><spring:message code="board.content" /></td>
-							<td><form:textarea path="content" readonly="true" /></td>
-							<td><font color="red"><form:errors path="content" /></font></td>
-						</tr>
-					</table>
-				</form:form>
-			</div>
-			<!-- 🔷 버튼 영역 -->
-			<div class="board-btn-area">
+			<!-- 관리자전용 -->
+			<sec:authorize access="hasRole('ROLE_ADMIN')">
+				<button type="submit" id="btnEdit">
+					<spring:message code="action.edit" />
+				</button>
+				<button type="submit" id="btnRemove">
+					<spring:message code="action.remove" />
+				</button>
+			</sec:authorize>
 
-				<sec:authentication property="principal" var="pinfo" />
+			<!-- 회원전용 -->
+			<!-- 사용자정보를 가져온다. -->
+			<sec:authentication property="principal" var="customuser" />
 
-				<!-- 관리자전용 -->
-				<sec:authorize access="hasRole('ROLE_ADMIN')">
-					<button type="submit" id="btnEdit">
+			<sec:authorize access="hasRole('ROLE_MEMBER')">
+				<c:if test="${customuser.getMember().userName eq board.writer}">
+
+					<button type="button" id="btnEdit">
 						<spring:message code="action.edit" />
 					</button>
-					<button type="submit" id="btnRemove">
+
+					<button type="button" id="btnRemove">
 						<spring:message code="action.remove" />
 					</button>
-				</sec:authorize>
 
-				<!-- 회원전용 -->
-				<!-- 사용자정보를 가져온다. -->
-				<sec:authentication property="principal" var="customuser" />
+				</c:if>
+			</sec:authorize>
 
-				<sec:authorize access="hasRole('ROLE_MEMBER')">
-					<c:if test="${customuser.getMember().userName eq board.writer}">
+			<button type="button" id="btnList">
+				<spring:message code="action.list" />
+			</button>
 
-						<button type="button" id="btnEdit">
-							<spring:message code="action.edit" />
-						</button>
-
-						<button type="button" id="btnRemove">
-							<spring:message code="action.remove" />
-						</button>
-
-					</c:if>
-				</sec:authorize>
-
-				<button type="button" id="btnList">
-					<spring:message code="action.list" />
-				</button>
-
-
-			</div>
 
 		</div>
+
 	</div>
 
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 
 	<script>
-		$(document).ready(function() {
-			let formObj = $("#board");
+		$(document).ready(
+				function() {
+					let formObj = $("#board");
 
-			$("#btnEdit").on("click", function() {
-				let boardNo = $("#boardNo")
-				self.location = "/board/modify?boardNo=" + boardNo.val();
-			});
+					$("#btnEdit").on(
+							"click",
+							function() {
+								let boardNo = $("#boardNo").val();
+								let page = $("#page").val();
+								let sizePerPage = $("#sizePerPage").val();
+								self.location = "/board/modify?page=" + page
+										+ "&sizePerPage=" + sizePerPage
+										+ "&boardNo=" + boardNo;
+							});
 
-			$("#btnRemove").on("click", function() {
-				let boardNo = $("#boardNo")
-				self.location = "/board/remove?boardNo=" + boardNo.val();
-			});
+					$("#btnRemove").on(
+							"click",
+							function() {
+								let boardNo = $("#boardNo").val();
+								let page = $("#page").val();
+								let sizePerPage = $("#sizePerPage").val();
+								self.location = "/board/remove?page=" + page
+										+ "&sizePerPage=" + sizePerPage
+										+ "&boardNo=" + boardNo;
+							});
 
-			$("#btnList").on("click", function() {
-				self.location = "/board/list";
-			});
+					$("#btnList").on(
+							"click",
+							function() {
+								let page = $("#page").val();
+								let sizePerPage = $("#sizePerPage").val();
+								self.location = "/board/list?page=" + page
+										+ "&sizePerPage=" + sizePerPage;
+							});
 
-		});
+				});
 	</script>
 
 </body>

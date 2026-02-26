@@ -10,7 +10,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Image Shop</title>
-<link rel="stylesheet" href="/css/user.css">
+<link rel="stylesheet" href="/css/board.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
@@ -19,24 +19,27 @@
 	<jsp:include page="/WEB-INF/views/common/menu.jsp" />
 
 	<!-- 메인 -->
-	<div class="user_read">
+	<div class="board_modify_main">
 		<h2>
 			<spring:message code="board.header.read" />
 		</h2>
 		<jsp:include page="/WEB-INF/views/common/header.jsp" />
 		<jsp:include page="/WEB-INF/views/common/menu.jsp" />
 
-		<!-- 🔷 메인 작업영역 -->
-		<div class="board-read">
+		<!--  메인 작업영역 -->
+		<div class="board_modify">
 
 			<h2>
 				<spring:message code="board.header.read" />
 			</h2>
 
-			<div class="board-read-inner">
+			<div class="board_modify_inner">
 
 				<form:form id="board" modelAttribute="board" method="post">
 					<form:hidden path="boardNo" />
+					<!-- 현재 페이지 번호와 페이징 크기를 숨겨진 필드 요소를 사용하여 전달한다. -->
+					<input type="hidden" id="page" name="page" value="${pgrq.page}">
+					<input type="hidden" id="sizePerPage" name="sizePerPage" value="${pgrq.sizePerPage}">
 
 					<table class="board-table">
 						<tr>
@@ -117,12 +120,12 @@
 			});
 
 			$("#btnRemove").on("click", function() {
-				let boardNo = $("#boardNo")
-				self.location = "/board/remove?boardNo=" + boardNo.val();
+				let boardNo = $("#boardNo").val()
+				self.location = "/board/remove?${pgrq.toUriString()}$boardNo=" + boardNo;
 			});
 
 			$("#btnList").on("click", function() {
-				self.location = "/board/list";
+				self.location = "/board/list${pgrq.toUriString()}";
 			});
 
 		});

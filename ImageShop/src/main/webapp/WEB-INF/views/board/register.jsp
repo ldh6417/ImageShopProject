@@ -10,7 +10,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Image Shop</title>
-<link rel="stylesheet" href="/css/user.css">
+<link rel="stylesheet" href="/css/board.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
@@ -19,7 +19,7 @@
 	<jsp:include page="/WEB-INF/views/common/menu.jsp" />
 
 	<!-- 메인 -->
-	<div class="user_register">
+	<div class="board_register">
 		<h2>
 			<spring:message code="board.header.register" />
 		</h2>
@@ -47,22 +47,22 @@
 
 		</form:form>
 
-		<sec:authorize access="isAuthenticated()">
+		<div class="board-btn-area">
 
-			<div class="user-btn-area">
+			<sec:authorize access="isAuthenticated()">
 				<button type="button" id="btnRegister">
 					<spring:message code="action.register" />
 				</button>
-			</div>
-		</sec:authorize>
+			</sec:authorize>
 
+			<button type="button" id="btnList">
+				<spring:message code="action.list" />
+			</button>
 
-		<button type="button" id="btnList">
-			<spring:message code="action.list" />
-		</button>
+		</div>
 
 	</div>
-	
+
 
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 
@@ -75,7 +75,7 @@
 			});
 
 			$("#btnList").on("click", function() {
-				self.location = "/board/list";
+				self.location = "/board/list?page=1&sizePerPage=10";
 			});
 		});
 	</script>

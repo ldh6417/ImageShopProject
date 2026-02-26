@@ -4,7 +4,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="sec"
 	uri="http://www.springframework.org/security/tags"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,90 +19,114 @@
 	<jsp:include page="/WEB-INF/views/common/menu.jsp" />
 
 	<!-- 메인 -->
-	<div class="user_modify">
+	<div class="user_read">
 		<h2>
-			<spring:message code="user.header.modify" />
+			<spring:message code="board.header.read" />
 		</h2>
-		<form:form modelAttribute="member" action="/user/modify" method="post">
-			<form:hidden path="userNo" />
-			<form:hidden path="userId" />
-			<table>
-				<tr>
-					<td><spring:message code="user.userId" /></td>
-					<td><form:input path="userId" disabled="true" /></td>
-				</tr>
-				<tr>
-					<td><spring:message code="user.userName" /></td>
-					<td><form:input path="userName" /></td>
-				</tr>
-				<tr>
-					<td><spring:message code="user.job" /></td>
-					<td><form:select path="job" items="${jobList}"
-							itemValue="value" itemLabel="label" /></td>
-				</tr>
-				<tr>
-					<td><spring:message code="user.auth" /> - 1</td>
-					<td><form:select path="authList[0].auth">
-							<form:option value="" label="=== 선택해 주세요 ===" />
-							<form:option value="ROLE_USER" label="사용자" />
-							<form:option value="ROLE_MEMBER" label="회원" />
-							<form:option value="ROLE_ADMIN" label="관리자" />
-						</form:select></td>
-				</tr>
-				<tr>
-					<td><spring:message code="user.auth" /> - 2</td>
-					<td><form:select path="authList[1].auth">
-							<form:option value="" label="=== 선택해 주세요 ===" />
-							<form:option value="ROLE_USER" label="사용자" />
-							<form:option value="ROLE_MEMBER" label="회원" />
-							<form:option value="ROLE_ADMIN" label="관리자" />
-						</form:select></td>
-				</tr>
-				<tr>
-					<td><spring:message code="user.auth" /> - 3</td>
-					<td><form:select path="authList[2].auth">
-							<form:option value="" label="=== 선택해 주세요 ===" />
-							<form:option value="ROLE_USER" label="사용자" />
-							<form:option value="ROLE_MEMBER" label="회원" />
-							<form:option value="ROLE_ADMIN" label="관리자" />
-						</form:select></td>
-				</tr>
+		<jsp:include page="/WEB-INF/views/common/header.jsp" />
+		<jsp:include page="/WEB-INF/views/common/menu.jsp" />
 
-			</table>
-		</form:form>
+		<!-- 🔷 메인 작업영역 -->
+		<div class="board-read">
 
-		<div>
-			<button type="submit" id="btnEdit">
-				<spring:message code="action.modify" />
-			</button>
-			<sec:authorize access= "hasRole('ROLE_ADMIN')">
-			<button type="submit" id="btnList">
-				<spring:message code="action.list" />
-			</button>
-			</sec:authorize>
+			<h2>
+				<spring:message code="board.header.read" />
+			</h2>
+
+			<div class="board-read-inner">
+
+				<form:form id="board" modelAttribute="board" method="post">
+					<form:hidden path="boardNo" />
+
+					<table class="board-table">
+						<tr>
+							<td><spring:message code="board.title" /></td>
+							<td><form:input path="title" /></td>
+							<td><font color="red"><form:errors path="title" /></font></td>
+						</tr>
+
+						<tr>
+							<td><spring:message code="board.writer" /></td>
+							<td><form:input path="writer" readonly="true" /></td>
+							<td><font color="red"><form:errors path="writer" /></font></td>
+						</tr>
+
+						<tr>
+							<td><spring:message code="board.content" /></td>
+							<td><form:textarea path="content" /></td>
+							<td><font color="red"><form:errors path="content" /></font></td>
+						</tr>
+					</table>
+				</form:form>
+			</div>
+
+			<!-- 🔷 버튼 영역 -->
+			<div class="board-btn-area">
+
+				<sec:authentication property="principal" var="pinfo" />
+
+				<!-- 관리자전용 -->
+				<sec:authorize access="hasRole('ROLE_ADMIN')">
+
+					<button type="submit" id="btnModify">
+						<spring:message code="action.modify" />
+					</button>
+
+					<button type="submit" id="btnRemove">
+						<spring:message code="action.remove" />
+					</button>
+
+				</sec:authorize>
+
+				<!-- 회원전용 -->
+				<!-- 사용자정보를 가져온다. -->
+				<sec:authentication property="principal" var="customuser" />
+
+				<sec:authorize access="hasRole('ROLE_MEMBER')">
+					<c:if test="${customuser.getMember().userName eq board.writer}">
+
+						<button type="submit" id="btnModify">
+							<spring:message code="action.modify" />
+						</button>
+
+						<button type="submit" id="btnRemove">
+							<spring:message code="action.remove" />
+						</button>
+
+					</c:if>
+				</sec:authorize>
+
+				<button type="button" id="btnList">
+					<spring:message code="action.list" />
+				</button>
+
+
+			</div>
+
 		</div>
-
 	</div>
-
-	<!-- 메인화면 작업 영역 끝 -->
 
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 
-	<!-- 이벤트 처리 영역 -->
-
 	<script>
 		$(document).ready(function() {
-			let formObj = $("#member");
+			let formObj = $("#board");
 
-			$("#btnEdit").on("click", function() {
+			$("#btnModify").on("click", function() {
 				formObj.submit();
 			});
 
+			$("#btnRemove").on("click", function() {
+				let boardNo = $("#boardNo")
+				self.location = "/board/remove?boardNo=" + boardNo.val();
+			});
 
 			$("#btnList").on("click", function() {
-				self.location = "/user/list";
+				self.location = "/board/list";
 			});
+
 		});
 	</script>
+
 </body>
 </html>

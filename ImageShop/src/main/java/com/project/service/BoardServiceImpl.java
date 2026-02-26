@@ -30,8 +30,10 @@ public class BoardServiceImpl implements BoardService {
 		return mapper.read(board);
 	}
 	
-	
-	
-	
-	
+	@Transactional
+	@Override
+	public int modify(Board board) throws Exception {
+		return mapper.modify(board);
+	}
+
 }

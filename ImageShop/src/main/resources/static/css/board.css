@@ -1,0 +1,181 @@
+/* ======================================
+   공통 카드 컨테이너 (board 계열)
+====================================== */
+.board_list, .board_modify_main, .board_readMain, .board_setup,
+	.board_modify, .board_read_inner, .board_register {
+	width: 1150px; /* 🔥 1000 → 1150 확장 */
+	max-width: 95%; /* 🔥 큰 화면 대응 */
+	margin: 40px auto;
+	padding: 35px 45px; /* 🔥 여백 살짝 증가 */
+	background: #ffffff;
+	border: 1px solid #e3f2fd;
+	border-radius: 12px;
+	box-shadow: 0 4px 14px rgba(0, 170, 255, 0.08);
+}
+
+/* ======================================
+   제목
+====================================== */
+.board_list h2, .board_modify_main h2, .board_readMain h2, .board_setup h2,
+	.board_modify h2, .board_register h2 {
+	margin-bottom: 28px;
+	font-size: 26px; /* 🔥 가독성 업 */
+	font-weight: 700;
+	color: #007acc;
+	border-bottom: 2px solid #e3f2fd;
+	padding-bottom: 12px;
+}
+
+/* ======================================
+   테이블 기본
+====================================== */
+.board_list table, .board-table, .board_register table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+/* ======================================
+   리스트 테이블
+====================================== */
+.board_list table {
+	table-layout: fixed;
+}
+
+.board_list th {
+	background: #e3f2fd;
+	color: #0d47a1;
+	padding: 13px 12px;
+	font-weight: 700;
+	border-bottom: 2px solid #b3e5fc;
+}
+
+.board_list td {
+	padding: 12px 12px;
+	border-bottom: 1px solid #eef7ff;
+	word-break: break-all;
+}
+
+/* hover */
+.board_list tr:hover td {
+	background: #f5fbff;
+}
+
+/* ======================================
+   상세/수정/등록 폼 영역
+====================================== */
+.board-table td, .board_register td {
+	padding: 12px 10px;
+	vertical-align: middle;
+}
+
+.board-table td:first-child, .board_register td:first-child {
+	font-weight: 600;
+	color: #222;
+	width: 200px; /* 🔥 라벨 영역 확대 */
+}
+
+/* ======================================
+   input / textarea
+====================================== */
+.board_modify input[type="text"], .board_modify textarea,
+	.board_read_inner input[type="text"], .board_read_inner textarea,
+	.board_setup input[type="text"], .board_register input[type="text"],
+	.board_register textarea {
+	width: 100%;
+	padding: 9px 12px;
+	border: 1px solid #cfefff;
+	border-radius: 6px;
+	font-size: 14px;
+	transition: all 0.2s ease;
+	background: #ffffff;
+	resize: vertical;
+}
+
+/* 🔥 textarea 가독성 업 */
+.board_register textarea, .board_modify textarea, .board_read_inner textarea
+	{
+	min-height: 180px;
+}
+
+/* focus */
+.board_modify input:focus, .board_modify textarea:focus, .board_setup input:focus,
+	.board_register input:focus, .board_register textarea:focus {
+	outline: none;
+	border-color: #4fc3f7;
+	box-shadow: 0 0 0 2px rgba(79, 195, 247, 0.15);
+}
+
+/* readonly */
+.board_read_inner input[readonly], .board_read_inner textarea[readonly],
+	.board_modify input[readonly] {
+	background: #f5faff;
+	color: #666;
+}
+
+/* ======================================
+   신규 등록 링크
+====================================== */
+.board_list a {
+	display: inline-block;
+	margin-bottom: 15px;
+	font-weight: 600;
+	color: #007acc;
+	text-decoration: none;
+}
+
+.board_list a:hover {
+	color: #005fa3;
+}
+
+/* ======================================
+   버튼 영역
+====================================== */
+.board-btn-area {
+	margin-top: 28px;
+	display: flex;
+	gap: 12px;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+
+/* ======================================
+   버튼 스타일
+====================================== */
+button {
+	padding: 10px 20px;
+	background: #4fc3f7;
+	color: #fff;
+	border: none;
+	border-radius: 8px;
+	font-weight: 600;
+	cursor: pointer;
+	transition: all 0.18s ease;
+}
+
+button:hover {
+	background: #007acc;
+}
+
+/* ======================================
+   페이징 영역
+====================================== */
+.board_list>div:last-child {
+	margin-top: 28px;
+	text-align: center;
+}
+
+.board_list>div:last-child a {
+	display: inline-block;
+	margin: 0 4px;
+	padding: 7px 12px;
+	border-radius: 6px;
+	background: #f1f8ff;
+	color: #007acc;
+	text-decoration: none;
+	font-weight: 600;
+}
+
+.board_list>div:last-child a:hover {
+	background: #007acc;
+	color: #fff;
+}

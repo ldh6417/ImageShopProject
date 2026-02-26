@@ -20,6 +20,7 @@
 	<jsp:include page="/WEB-INF/views/common/menu.jsp" />
 
 	<form method="post" action="/auth/logout">
+	
 	<div class="auth_logout">
 		<table>
 			<tr>

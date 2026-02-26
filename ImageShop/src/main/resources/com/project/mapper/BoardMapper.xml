@@ -26,10 +26,14 @@
 
 	<!-- 게시글 수정 처리 -->
 	<update id="modify">
-		UPDATE board SET title = #{title}, content = #{content} WHERE board_no = #{boardNo}
+		UPDATE board SET title = #{title}, content =
+		#{content} WHERE board_no = #{boardNo}
 	</update>
 
-
+	<!-- 게시글 삭제 처리 -->
+	<delete id="remove">
+		DELETE FROM board WHERE board_no = #{boardNo}
+	</delete>
 
 
 </mapper> 

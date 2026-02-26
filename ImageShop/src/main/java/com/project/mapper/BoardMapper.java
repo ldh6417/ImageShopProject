@@ -10,9 +10,10 @@ public interface BoardMapper {
 
 	public List<Board> list() throws Exception;
 
-	public Board read(Board board)throws Exception;
+	public Board read(Board board) throws Exception;
 
-	public int modify(Board board)throws Exception;
+	public int modify(Board board) throws Exception;
 
+	public int remove(Board board) throws Exception;
 
 }

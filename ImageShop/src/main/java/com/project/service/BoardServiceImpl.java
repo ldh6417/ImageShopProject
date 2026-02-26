@@ -36,4 +36,9 @@ public class BoardServiceImpl implements BoardService {
 		return mapper.modify(board);
 	}
 
+	@Override
+	public int remove(Board board) throws Exception {
+		return mapper.remove(board);
+	}
+
 }

@@ -84,4 +84,18 @@ public class BoardController {
 
 	}
 
+	// 게시글 삭제 처리
+	@GetMapping("/remove")
+	@PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_MEMBER')")
+	public String remove(Board board, RedirectAttributes rttr) throws Exception {
+		int count =  service.remove(board);
+		
+		if (count != 0) {
+			rttr.addFlashAttribute("msg", "SUCCESS");
+		} else {
+			rttr.addFlashAttribute("msg", "FAIL");
+		}
+		return "redirect:/board/list";
+	}
+
 }

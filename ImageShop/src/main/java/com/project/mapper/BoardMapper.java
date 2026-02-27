@@ -10,8 +10,8 @@ public interface BoardMapper {
 	public int register(Board board) throws Exception;
 
 //	public List<Board> list() throws Exception;
-	
-	public List<Board> list(PageRequest pageRequest)throws Exception;
+
+	public List<Board> list(PageRequest pageRequest) throws Exception;
 
 	public Board read(Board board) throws Exception;
 
@@ -19,8 +19,6 @@ public interface BoardMapper {
 
 	public int remove(Board board) throws Exception;
 
-	public int count() throws Exception;
-
-	
+	public int count(PageRequest pageRequest) throws Exception;
 
 }

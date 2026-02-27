@@ -48,8 +48,9 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public int count() throws Exception {
-		return mapper.count();
+	public int count(PageRequest pageRequest) throws Exception {
+		// TODO Auto-generated method stub
+		return mapper.count(pageRequest);
 	}
 
 }

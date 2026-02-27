@@ -1,5 +1,8 @@
 package com.project.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
@@ -13,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.project.commom.security.domain.CustomUser;
+import com.project.common.domain.CodeLabelValue;
 import com.project.common.domain.PageRequest;
 import com.project.common.domain.Pagination;
 import com.project.domain.Board;
@@ -67,9 +71,21 @@ public class BoardController {
 		// 현재 페이지 4, 한페이지당 보여주는 갯수 10개셋팅
 		pagiRequest.setPageRequest(pageRequest);
 		// 리스트 전체갯수 세팅 다시계산
-		pagiRequest.setTotalCount(service.count());
+		pagiRequest.setTotalCount(service.count(pageRequest));
 		// 화면 페이지를 보여주는 정보를 제공
 		model.addAttribute("pagination", pagiRequest);
+
+		// 검색 유형의 코드명과 코드값을 정의한다.
+		List<CodeLabelValue> searchTypeCodeValueList = new ArrayList<CodeLabelValue>();
+		searchTypeCodeValueList.add(new CodeLabelValue("n", "---"));
+		searchTypeCodeValueList.add(new CodeLabelValue("t", "Title"));
+		searchTypeCodeValueList.add(new CodeLabelValue("c", "Content"));
+		searchTypeCodeValueList.add(new CodeLabelValue("w", "Writer"));
+		searchTypeCodeValueList.add(new CodeLabelValue("tc", "Title OR Content"));
+		searchTypeCodeValueList.add(new CodeLabelValue("cw", "Content OR Writer"));
+		searchTypeCodeValueList.add(new CodeLabelValue("tcw", "Title OR Content OR Writer"));
+
+		model.addAttribute("searchTypeCodeValueList", searchTypeCodeValueList);
 
 	}
 
@@ -89,35 +105,35 @@ public class BoardController {
 	// 게시글 수정 처리
 	@PostMapping("/modify")
 	@PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_MEMBER')")
-	public String modify(Board board,PageRequest pageRequest, RedirectAttributes rttr) throws Exception {
+	public String modify(Board board, PageRequest pageRequest, RedirectAttributes rttr) throws Exception {
 		int count = service.modify(board);
 		rttr.addFlashAttribute("page", pageRequest.getPage());
 		rttr.addFlashAttribute("sizePerPage", pageRequest.getSizePerPage());
-		
+
 		if (count != 0) {
 			rttr.addFlashAttribute("msg", "SUCCESS");
 		} else {
 			rttr.addFlashAttribute("msg", "FAIL");
 		}
-		return "redirect:/board/list"+pageRequest.toUriString();
+		return "redirect:/board/list" + pageRequest.toUriString();
 
 	}
 
 	// 게시글 삭제 처리
 	@GetMapping("/remove")
 	@PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_MEMBER')")
-	public String remove(Board board,PageRequest pageRequest, RedirectAttributes rttr) throws Exception {
+	public String remove(Board board, PageRequest pageRequest, RedirectAttributes rttr) throws Exception {
 		int count = service.remove(board);
-		
+
 		rttr.addFlashAttribute("page", pageRequest.getPage());
 		rttr.addFlashAttribute("sizePerPage", pageRequest.getSizePerPage());
-		
+
 		if (count != 0) {
 			rttr.addFlashAttribute("msg", "SUCCESS");
 		} else {
 			rttr.addFlashAttribute("msg", "FAIL");
 		}
-		return "redirect:/board/list"+pageRequest.toUriString();
+		return "redirect:/board/list" + pageRequest.toUriString();
 	}
 
 }

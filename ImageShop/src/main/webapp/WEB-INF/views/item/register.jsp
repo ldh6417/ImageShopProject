@@ -20,26 +20,41 @@
 
 	<!-- 메인 -->
 	<div class="notice_register">
-		<h2>
-		공지사항 등록
-		</h2>
+		<h2><spring:message code="item.header.register" /></h2>
 
-		<form:form modelAttribute="item" action="item/register">
+		<form:form modelAttribute="item" action="/item/register"
+			enctype="multipart/form-data" method="post">
 			<table>
 				<tr>
-					<td><spring:message code="notice.title" /></td>
-					<td><form:input path="title" /></td>
-					<td><font color="red"><form:errors path="title" /></font></td>
+					<td><spring:message code="item.itemName" /></td>
+					<td><form:input path="itemName" /></td>
+					<td><font color="red"><form:errors path="itemName" /></font></td>
 				</tr>
 				<tr>
-					<td><spring:message code="notice.content" /></td>
-					<td><form:textarea path="content" /></td>
-					<td><font color="red"><form:errors path="content" /></font></td>
+					<td><spring:message code="item.itemPrice" /></td>
+					<td><form:input path="price" />&nbsp;원</td>
+					<td><font color="red"><form:errors path="price" /></font></td>
+				</tr>
+				<tr>
+
+					<td><spring:message code="item.itemFile" /></td>
+					<td><input type="file" name="picture" /></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td><spring:message code="item.itemPreviewFile" /></td>
+					<td><input type="file" name="preview" /></td>
+					<td></td>
+
+				</tr>
+				<tr>
+
+					<td><spring:message code="item.itemDescription" /></td>
+					<td><form:textarea path="description" /></td>
+					<td><form:errors path="description" /></td>
 				</tr>
 			</table>
-
 		</form:form>
-
 		<div class="board-btn-area">
 
 			<sec:authorize access="hasRole('ROLE_ADMIN')">
@@ -61,14 +76,14 @@
 
 	<script>
 		$(document).ready(function() {
-			const formObj = $("#notice");
+			const formObj = $("#item");
 
 			$("#btnRegister").on("click", function() {
 				formObj.submit();
 			});
 
 			$("#btnList").on("click", function() {
-				self.location = "/notice/list";
+				self.location = "/item/list";
 			});
 		});
 	</script>

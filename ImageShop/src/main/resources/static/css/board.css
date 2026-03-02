@@ -179,3 +179,216 @@ button:hover {
 	background: #007acc;
 	color: #fff;
 }
+
+/* ======================================
+   댓글 리스트 영역
+====================================== */
+.reply_view {
+	margin-top: 35px;
+	border-top: 2px solid #e3f2fd;
+	padding-top: 20px;
+}
+
+/* 댓글 한 줄 */
+.reply_view tr {
+	display: grid;
+	grid-template-columns: 160px 1fr 180px;
+	gap: 12px;
+	padding: 14px 12px;
+	border-bottom: 1px solid #eef7ff;
+	align-items: center;
+	background: #ffffff;
+}
+
+/* hover 효과 */
+.reply_view tr:hover {
+	background: #f5fbff;
+}
+
+/* 작성자 */
+.reply_view td:nth-child(1) {
+	font-weight: 700;
+	color: #007acc;
+	text-align: center;
+}
+
+/* 내용 */
+.reply_view td:nth-child(2) {
+	color: #333;
+	word-break: break-word;
+}
+
+/* 날짜 */
+.reply_view td:nth-child(3) {
+	font-size: 13px;
+	color: #888;
+	text-align: center;
+}
+
+/* ======================================
+   댓글 등록 영역
+====================================== */
+.reply_register {
+	margin-top: 30px;
+	padding: 20px;
+	background: #f8fcff;
+	border: 1px solid #e3f2fd;
+	border-radius: 10px;
+}
+
+/* 댓글 라벨 */
+.reply_register label {
+	display: block;
+	font-weight: 700;
+	color: #007acc;
+	margin-bottom: 8px;
+}
+
+/* 댓글 textarea */
+.reply_register textarea {
+	width: 100%;
+	min-height: 110px;
+	padding: 10px 12px;
+	border: 1px solid #cfefff;
+	border-radius: 6px;
+	font-size: 14px;
+	resize: vertical;
+	margin-bottom: 12px;
+	transition: all 0.2s ease;
+}
+
+/* focus */
+.reply_register textarea:focus {
+	outline: none;
+	border-color: #4fc3f7;
+	box-shadow: 0 0 0 2px rgba(79, 195, 247, 0.15);
+}
+
+/* 댓글 버튼 */
+.reply_register button {
+	padding: 9px 18px;
+	background: #4fc3f7;
+	border-radius: 8px;
+	font-weight: 600;
+}
+
+.reply_register button:hover {
+	background: #007acc;
+}
+
+/* ======================================
+   댓글 목록 영역 (READ 페이지 전용)
+====================================== */
+
+/* 전체 댓글 영역 */
+.reply_view {
+	margin-top: 30px;
+}
+
+/* 댓글 한 줄 카드화 */
+.reply_view tr {
+	display: block;
+	margin-bottom: 12px;
+	padding: 14px 18px;
+	border: 1px solid #e3f2fd;
+	border-radius: 10px;
+	background: #ffffff;
+	box-shadow: 0 2px 8px rgba(0, 170, 255, 0.05);
+	transition: all 0.18s ease;
+}
+
+/* hover */
+.reply_view tr:hover {
+	background: #f5fbff;
+}
+
+/* 내부 td 정렬 */
+.reply_view td {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+/* 작성자 */
+.reply_view td:nth-child(1) {
+	width: 140px;
+	font-weight: 700;
+	color: #007acc;
+}
+
+/* 내용 */
+.reply_view td:nth-child(2) {
+	width: calc(100% - 320px);
+	color: #333;
+	word-break: break-word;
+}
+
+/* 날짜 */
+.reply_view td:nth-child(3) {
+	width: 160px;
+	text-align: right;
+	font-size: 13px;
+	color: #888;
+}
+
+/* ======================================
+   댓글 목록 영역
+====================================== */
+.reply_view {
+	margin-top: 35px;
+}
+
+/* 테이블 */
+.reply-table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+/* 헤더 */
+.reply-table th {
+	background: #e3f2fd;
+	color: #0d47a1;
+	padding: 12px;
+	font-weight: 700;
+	border-bottom: 2px solid #b3e5fc;
+	text-align: center;
+}
+
+/* 바디 */
+.reply-table td {
+	padding: 12px;
+	border-bottom: 1px solid #eef7ff;
+	vertical-align: middle;
+}
+
+/* hover */
+.reply-table tbody tr:hover td {
+	background: #f5fbff;
+}
+
+/* 작성자 */
+.reply-writer {
+	font-weight: 700;
+	color: #007acc;
+	text-align: center;
+}
+
+/* 내용 */
+.reply-content {
+	color: #333;
+	word-break: break-word;
+}
+
+/* 날짜 */
+.reply-date {
+	font-size: 13px;
+	color: #888;
+	text-align: center;
+}
+
+/* 데이터 없을 때 */
+.reply-empty {
+	text-align: center;
+	padding: 30px 0;
+	color: #888;
+	font-weight: 600;
+}

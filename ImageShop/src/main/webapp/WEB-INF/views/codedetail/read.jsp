@@ -2,7 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-
+<%@ taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -63,27 +64,32 @@
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 
 	<script>
-		$(document).ready(function() {
-			let formObj = $("#codeDetail");
+		$(document).ready(
+				function() {
+					let formObj = $("#codeDetail");
 
-			$("#btnEdit").on("click", function() {
-				let groupCode = $("#groupCode");
-				let groupCodeValue = groupCode.val();
-				let codeValue = $("#codeValue");
-				let codeValueValue = codeValue.val();
-				self.location = "modify?groupCode="+groupCodeValue+"&"+"codeValue="+codeValueValue
-			});
+					$("#btnEdit").on(
+							"click",
+							function() {
+								let groupCode = $("#groupCode");
+								let groupCodeValue = groupCode.val();
+								let codeValue = $("#codeValue");
+								let codeValueValue = codeValue.val();
+								self.location = "modify?groupCode="
+										+ groupCodeValue + "&" + "codeValue="
+										+ codeValueValue
+							});
 
-			$("#btnRemove").on("click", function() {
-				formObj.attr("action", "/codedetail/remove");
-				formObj.attr("method", "get");
-				formObj.submit();
-			});
+					$("#btnRemove").on("click", function() {
+						formObj.attr("action", "/codedetail/remove");
+						formObj.attr("method", "get");
+						formObj.submit();
+					});
 
-			$("#btnList").on("click", function() {
-				self.location = "/codedetail/list";
-			});
-		});
+					$("#btnList").on("click", function() {
+						self.location = "/codedetail/list";
+					});
+				});
 	</script>
 </body>
 </html>

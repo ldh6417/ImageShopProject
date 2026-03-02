@@ -98,6 +98,10 @@
 		SELECT count(*)
 		FROM member
 	</select>
+	<!-- 멤버정보 -->
+	<select id="readByNo">
+		SELECT * FROM MEMBER WHERE user_id = #{username}
+	</select>
 </mapper> 
 
 

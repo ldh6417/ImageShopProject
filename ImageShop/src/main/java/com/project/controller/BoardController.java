@@ -22,12 +22,16 @@ import com.project.common.domain.Pagination;
 import com.project.domain.Board;
 import com.project.domain.Member;
 import com.project.service.BoardService;
+import com.project.service.ReplyService;
 
 @Controller
 @RequestMapping("/board")
 public class BoardController {
 	@Autowired
 	private BoardService service;
+	
+	@Autowired
+	private ReplyService replyservice;
 
 	// 게시글 등록 페이지
 	@GetMapping("/register")
@@ -93,6 +97,7 @@ public class BoardController {
 	@GetMapping("/read")
 	public void read(Board board, @ModelAttribute("pgrq") PageRequest pageRequest, Model model) throws Exception {
 		model.addAttribute(service.read(board));
+		model.addAttribute("replyList",replyservice.list(board));
 	}
 
 	// 게시글 수정 페이지

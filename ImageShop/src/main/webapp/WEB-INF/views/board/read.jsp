@@ -5,6 +5,7 @@
 <%@ taglib prefix="sec"
 	uri="http://www.springframework.org/security/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -56,7 +57,53 @@
 					</tr>
 				</table>
 			</form:form>
+
+			<div class="reply_view">
+
+				<table class="reply-table">
+			
+					<tbody>
+						<c:choose>
+							<c:when test="${empty replyList}">
+								<tr>
+									<td colspan="3" class="reply-empty"><spring:message
+											code="common.listEmpty" /></td>
+								</tr>
+							</c:when>
+
+							<c:otherwise>
+								<c:forEach items="${replyList}" var="reply">
+									<tr>
+										<td class="reply-writer">${reply.member.userId}</td>
+										<td class="reply-content">${reply.content}</td>
+										<td class="reply-date"><fmt:formatDate
+												pattern="yyyy-MM-dd HH:mm" value="${reply.regDate}" /></td>
+									</tr>
+								</c:forEach>
+							</c:otherwise>
+						</c:choose>
+					</tbody>
+				</table>
+
+			</div>
+
+			<sec:authorize access="hasAnyRole('ROLE_MEMBER', 'ROLE_ADMIN')">
+				<div class="reply_register">
+					<sec:authentication property="principal" var="pinfo" />
+					<form action="/reply/replyRegister" method="post">
+						<input type="hidden" name="username" value="${pinfo.username}" />
+						<input type="hidden" name="boardNo" value="${board.boardNo}" /> <label
+							for="reply_content">댓글작성</label>
+						<textarea id="reply_content" name="content"> </textarea>
+						<button type="submit">댓글작성</button>
+					</form>
+				</div>
+			</sec:authorize>
 		</div>
+
+
+
+
 		<!-- 🔷 버튼 영역 -->
 		<div class="board-btn-area">
 

@@ -25,13 +25,27 @@
 	</insert>
 
 	<select id="list" resultMap="replyMap">
-		SELECT USER_ID,R.CONTENT,R.REG_DATE
+		SELECT R.REPLY_NO,
+		USER_ID,R.CONTENT,R.REG_DATE
 		FROM MEMBER M INNER JOIN REPLY R ON
 		M.USER_NO = R.USER_NO INNER JOIN
 		BOARD B ON B.BOARD_NO = R.BOARD_NO
-		WHERE B.BOARD_NO = #{boardNo} ORDER BY
+		WHERE B.BOARD_NO = #{boardNo} ORDER
+		BY
 		R.REPLY_NO ASC
 	</select>
+
+	<!-- 댓글 삭제 -->
+	<delete id="replyRemove">
+		DELETE FROM REPLY WHERE REPLY_NO =
+		#{replyNo}
+	</delete>
+
+	<update id="update">
+		UPDATE REPLY SET CONTENT = #{content} WHERE reply_no
+		= #{replyNo}
+	</update>
+
 
 
 

@@ -4,11 +4,11 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.project.domain.Board;
 import com.project.domain.Reply;
 import com.project.mapper.ReplyMapper;
-
 
 @Service
 public class ReplyServiceImpl implements ReplyService {
@@ -16,6 +16,7 @@ public class ReplyServiceImpl implements ReplyService {
 	private ReplyMapper mapper;
 
 	@Override
+	@Transactional
 	public int register(Reply reply) throws Exception {
 		return mapper.register(reply);
 	}
@@ -25,6 +26,18 @@ public class ReplyServiceImpl implements ReplyService {
 		return mapper.list(board);
 	}
 
-	
+	@Override
+	@Transactional
+	public int replyRemove(Reply reply) throws Exception {
+		return mapper.replyRemove(reply);
+	}
+
+	@Override
+	public void modify(Reply reply) throws Exception {
+		 mapper.update(reply);
+		
+	}
+
+
 
 }

@@ -58,15 +58,16 @@
 				</table>
 			</form:form>
 
+			<!-- 댓글기능 영역 -->
+			<sec:authentication property="principal" var="pinfo" />
 			<div class="reply_view">
-
 				<table class="reply-table">
-			
+
 					<tbody>
 						<c:choose>
 							<c:when test="${empty replyList}">
 								<tr>
-									<td colspan="3" class="reply-empty"><spring:message
+									<td colspan="4" class="reply-empty"><spring:message
 											code="common.listEmpty" /></td>
 								</tr>
 							</c:when>
@@ -75,9 +76,61 @@
 								<c:forEach items="${replyList}" var="reply">
 									<tr>
 										<td class="reply-writer">${reply.member.userId}</td>
-										<td class="reply-content">${reply.content}</td>
+
+										<td class="reply-content">
+											<!-- 기존 텍스트 -->
+											<div id="reply-text-${reply.replyNo}">${reply.content}
+											</div> <!-- 인라인 수정 폼 -->
+											<form action="/reply/modify" method="post"
+												id="reply-edit-form-${reply.replyNo}"
+												style="display: none; margin: 0;">
+
+												<input type="hidden" name="replyNo" value="${reply.replyNo}">
+												<input type="hidden" name="boardNo" value="${board.boardNo}">
+												<input type="hidden" name="${_csrf.parameterName}"
+													value="${_csrf.token}">
+
+												<textarea name="content" style="width: 100%; height: 60px;">${reply.content}</textarea>
+
+												<div class="inline-edit-btns">
+													<button type="submit">저장</button>
+													<button type="button"
+														onclick="cancelEdit(${reply.replyNo})">취소</button>
+												</div>
+											</form>
+
+										</td>
+
 										<td class="reply-date"><fmt:formatDate
 												pattern="yyyy-MM-dd HH:mm" value="${reply.regDate}" /></td>
+
+										<td class="reply-actions"><sec:authorize
+												access="isAuthenticated()">
+												<c:if test="${pinfo.username eq reply.member.userId}">
+
+													<!--  버튼 묶음 -->
+													<div id="action-btns-${reply.replyNo}">
+
+														<!-- 삭제 -->
+														<form action="/reply/replyRemove" method="post"
+															style="display: inline;">
+															<input type="hidden" name="replyNo"
+																value="${reply.replyNo}"> <input type="hidden"
+																name="boardNo" value="${board.boardNo}"> <input
+																type="hidden" name="${_csrf.parameterName}"
+																value="${_csrf.token}">
+															<button type="submit"
+																onclick="return confirm('정말 삭제하시겠습니까?')">삭제</button>
+														</form>
+
+														<!-- 수정 -->
+														<button type="button"
+															onclick="showEditForm(${reply.replyNo})">수정</button>
+
+													</div>
+
+												</c:if>
+											</sec:authorize></td>
 									</tr>
 								</c:forEach>
 							</c:otherwise>
@@ -100,8 +153,6 @@
 				</div>
 			</sec:authorize>
 		</div>
-
-
 
 
 		<!-- 🔷 버튼 영역 -->
@@ -185,6 +236,18 @@
 							});
 
 				});
+
+		function showEditForm(replyNo) {
+			$('#reply-text-' + replyNo).hide();
+			$('#action-btns-' + replyNo).hide();
+			$('#reply-edit-form-' + replyNo).fadeIn(200);
+		}
+
+		function cancelEdit(replyNo) {
+			$('#reply-edit-form-' + replyNo).hide();
+			$('#reply-text-' + replyNo).show();
+			$('#action-btns-' + replyNo).show();
+		}
 	</script>
 
 </body>

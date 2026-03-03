@@ -11,4 +11,8 @@ public interface ReplyMapper {
 
 	public List<Board> list(Board board) throws Exception;
 
+	public int replyRemove(Reply reply) throws Exception;
+
+	public void update(Reply reply) throws Exception;
+
 }

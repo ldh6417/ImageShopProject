@@ -11,6 +11,7 @@ public class Reply {
 	private int boardNo;
 	private String content; 
 	private Date regDate;
+	
 	private Board board;
 	private Member member;
 }

@@ -9,7 +9,7 @@
 <div class="app-menu" align="right">
 	<table>
 		<tr>
-			<!-- 인증을 하지 않았을 때 메뉴 -->
+			<!-- 비회원 인증을 하지 않았을 때 메뉴 -->
 			<sec:authorize access="!isAuthenticated()">
 				<td class="nav-item"><a href="/board/list" class="nav-link">
 						<spring:message code="board.header.list" />
@@ -43,6 +43,8 @@
 					<td width="120"><a href="/item/list"><spring:message
 								code="menu.item.member" /></a></td>
 				</sec:authorize>
+				
+				
 				<!-- 인증완료 인가 : 회원 -->
 				<sec:authorize access="hasRole('ROLE_MEMBER')">
 					<td class="nav-item"><a href="/board/list" class="nav-link">

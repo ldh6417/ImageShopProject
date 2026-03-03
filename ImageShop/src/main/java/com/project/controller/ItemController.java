@@ -151,8 +151,91 @@ public class ItemController {
 		return entity;
 	}
 
-	// 원본 이미지
-	// 파일 확장자로 이미지 형식 확인
+	// 상품 수정 처리
+	@PostMapping("/modify")
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
+	public String modify(Item item, RedirectAttributes rttr) throws Exception {
+		MultipartFile pictureFile = item.getPicture();
+		if (pictureFile != null && pictureFile.getSize() > 0) {
+			String createdFilename = uploadFile(pictureFile.getOriginalFilename(), pictureFile.getBytes());
+			// 기존의 이지지파일 삭제
+			Item item2 = itemService.read(item);
+			String pictureUrl = item2.getPictureUrl();
+			File _pictureFile = new File(uploadPath, pictureUrl);
+			_pictureFile.delete();
+
+			item.setPictureUrl(createdFilename);
+		}
+
+		MultipartFile previewFile = item.getPreview();
+
+		if (previewFile != null && previewFile.getSize() > 0) {
+			String createdFilename = uploadFile(previewFile.getOriginalFilename(), previewFile.getBytes());
+			// 기존의 프리뷰 파일 삭제
+			Item item2 = itemService.read(item);
+			String previewUrl = item2.getPreviewUrl();
+			File _previewFile = new File(uploadPath, previewUrl);
+			_previewFile.delete();
+
+			item.setPreviewUrl(createdFilename);
+		}
+		int count = itemService.modify(item);
+		if (count != 0) {
+			rttr.addFlashAttribute("msg", "SUCCESS");
+		} else {
+			rttr.addFlashAttribute("msg", "FAIL");
+		}
+		return "redirect:/item/list";
+	}
+
+	// 상품 삭제화면 페이지요청
+	@GetMapping("/remove")
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
+	public String removeForm(Item item, Model model) throws Exception {
+		Item _item = itemService.read(item);
+		model.addAttribute(_item);
+		return "item/remove";
+	}
+
+	// 상품 삭제 처리
+	@PostMapping("/remove")
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
+	public String remove(Item item, RedirectAttributes rttr) throws Exception {
+		// 외장 하드에 있는 상품이미지를 먼저 제거
+		Item _item = itemService.read(item);
+		String pictureUrl = _item.getPictureUrl();
+		String previewUrl = _item.getPreviewUrl();
+
+		if (pictureUrl != null && pictureUrl.length() > 0) {
+			File _pictureFile = new File(uploadPath, pictureUrl);
+			_pictureFile.delete();
+		}
+
+		if (previewUrl != null && previewUrl.length() > 0) {
+			File _previewFile = new File(uploadPath, previewUrl);
+			_previewFile.delete();
+
+		}
+
+		// item 상품테이블에서 삭제 처리
+		int count = itemService.remove(item);
+		if (count != 0) {
+			rttr.addFlashAttribute("msg", "SUCCESS");
+		} else {
+			rttr.addFlashAttribute("msg", "FAIL");
+		}
+		return "redirect:/item/list";
+	}
+
+	// 상품 상세 페이지
+	@GetMapping("/read")
+	public String read(Item item, Model model) throws Exception {
+		Item _item = itemService.read(item);
+		model.addAttribute("item",_item);
+		return "item/read";
+	}
+
+	// 썸네일 이미지 표시
 	private MediaType getMediaType(String formatName) {
 		if (formatName != null) {
 			if (formatName.equals("JPG")) {

@@ -1,12 +1,12 @@
 /* ======================================
-   공통 카드 컨테이너 (board 계열)
+   공통 카드 컨테이너
 ====================================== */
 .board_list, .board_modify_main, .board_readMain, .board_setup,
 	.board_modify, .board_read_inner, .board_register {
-	width: 1150px; /* 🔥 1000 → 1150 확장 */
-	max-width: 95%; /* 🔥 큰 화면 대응 */
+	width: 1150px;
+	max-width: 95%;
 	margin: 40px auto;
-	padding: 35px 45px; /* 🔥 여백 살짝 증가 */
+	padding: 35px 45px;
 	background: #ffffff;
 	border: 1px solid #e3f2fd;
 	border-radius: 12px;
@@ -19,7 +19,7 @@
 .board_list h2, .board_modify_main h2, .board_readMain h2, .board_setup h2,
 	.board_modify h2, .board_register h2 {
 	margin-bottom: 28px;
-	font-size: 26px; /* 🔥 가독성 업 */
+	font-size: 26px;
 	font-weight: 700;
 	color: #007acc;
 	border-bottom: 2px solid #e3f2fd;
@@ -27,16 +27,13 @@
 }
 
 /* ======================================
-   테이블 기본
+   테이블
 ====================================== */
 .board_list table, .board-table, .board_register table {
 	width: 100%;
 	border-collapse: collapse;
 }
 
-/* ======================================
-   리스트 테이블
-====================================== */
 .board_list table {
 	table-layout: fixed;
 }
@@ -55,13 +52,12 @@
 	word-break: break-all;
 }
 
-/* hover */
 .board_list tr:hover td {
 	background: #f5fbff;
 }
 
 /* ======================================
-   상세/수정/등록 폼 영역
+   폼 영역
 ====================================== */
 .board-table td, .board_register td {
 	padding: 12px 10px;
@@ -71,11 +67,11 @@
 .board-table td:first-child, .board_register td:first-child {
 	font-weight: 600;
 	color: #222;
-	width: 200px; /* 🔥 라벨 영역 확대 */
+	width: 200px;
 }
 
 /* ======================================
-   input / textarea
+   INPUT / TEXTAREA
 ====================================== */
 .board_modify input[type="text"], .board_modify textarea,
 	.board_read_inner input[type="text"], .board_read_inner textarea,
@@ -86,26 +82,23 @@
 	border: 1px solid #cfefff;
 	border-radius: 6px;
 	font-size: 14px;
-	transition: all 0.2s ease;
-	background: #ffffff;
+	background: #fff;
+	transition: all .2s ease;
 	resize: vertical;
 }
 
-/* 🔥 textarea 가독성 업 */
 .board_register textarea, .board_modify textarea, .board_read_inner textarea
 	{
 	min-height: 180px;
 }
 
-/* focus */
 .board_modify input:focus, .board_modify textarea:focus, .board_setup input:focus,
 	.board_register input:focus, .board_register textarea:focus {
 	outline: none;
 	border-color: #4fc3f7;
-	box-shadow: 0 0 0 2px rgba(79, 195, 247, 0.15);
+	box-shadow: 0 0 0 2px rgba(79, 195, 247, .15);
 }
 
-/* readonly */
 .board_read_inner input[readonly], .board_read_inner textarea[readonly],
 	.board_modify input[readonly] {
 	background: #f5faff;
@@ -113,7 +106,7 @@
 }
 
 /* ======================================
-   신규 등록 링크
+   링크
 ====================================== */
 .board_list a {
 	display: inline-block;
@@ -128,20 +121,9 @@
 }
 
 /* ======================================
-   버튼 영역
+   버튼
 ====================================== */
-.board-btn-area {
-	margin-top: 28px;
-	display: flex;
-	gap: 12px;
-	justify-content: center;
-	flex-wrap: wrap;
-}
-
-/* ======================================
-   버튼 스타일
-====================================== */
-button {
+.board_list button, .board_register button, .reply_register button {
 	padding: 10px 20px;
 	background: #4fc3f7;
 	color: #fff;
@@ -149,15 +131,36 @@ button {
 	border-radius: 8px;
 	font-weight: 600;
 	cursor: pointer;
-	transition: all 0.18s ease;
+	transition: all .18s ease;
 }
 
-button:hover {
+.board_list button:hover, .board_register button:hover, .reply_register button:hover
+	{
 	background: #007acc;
 }
 
 /* ======================================
-   페이징 영역
+   검색 영역
+====================================== */
+.board_search {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	margin-bottom: 20px;
+}
+
+.board_search select, .board_search input {
+	padding: 6px 10px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+}
+
+.board_search input {
+	width: 200px;
+}
+
+/* ======================================
+   페이징
 ====================================== */
 .board_list>div:last-child {
 	margin-top: 28px;
@@ -181,52 +184,7 @@ button:hover {
 }
 
 /* ======================================
-   댓글 리스트 영역
-====================================== */
-.reply_view {
-	margin-top: 35px;
-	border-top: 2px solid #e3f2fd;
-	padding-top: 20px;
-}
-
-/* 댓글 한 줄 */
-.reply_view tr {
-	display: grid;
-	grid-template-columns: 160px 1fr 180px;
-	gap: 12px;
-	padding: 14px 12px;
-	border-bottom: 1px solid #eef7ff;
-	align-items: center;
-	background: #ffffff;
-}
-
-/* hover 효과 */
-.reply_view tr:hover {
-	background: #f5fbff;
-}
-
-/* 작성자 */
-.reply_view td:nth-child(1) {
-	font-weight: 700;
-	color: #007acc;
-	text-align: center;
-}
-
-/* 내용 */
-.reply_view td:nth-child(2) {
-	color: #333;
-	word-break: break-word;
-}
-
-/* 날짜 */
-.reply_view td:nth-child(3) {
-	font-size: 13px;
-	color: #888;
-	text-align: center;
-}
-
-/* ======================================
-   댓글 등록 영역
+   댓글 등록
 ====================================== */
 .reply_register {
 	margin-top: 30px;
@@ -236,7 +194,6 @@ button:hover {
 	border-radius: 10px;
 }
 
-/* 댓글 라벨 */
 .reply_register label {
 	display: block;
 	font-weight: 700;
@@ -244,7 +201,6 @@ button:hover {
 	margin-bottom: 8px;
 }
 
-/* 댓글 textarea */
 .reply_register textarea {
 	width: 100%;
 	min-height: 110px;
@@ -254,96 +210,26 @@ button:hover {
 	font-size: 14px;
 	resize: vertical;
 	margin-bottom: 12px;
-	transition: all 0.2s ease;
 }
 
-/* focus */
 .reply_register textarea:focus {
 	outline: none;
 	border-color: #4fc3f7;
-	box-shadow: 0 0 0 2px rgba(79, 195, 247, 0.15);
-}
-
-/* 댓글 버튼 */
-.reply_register button {
-	padding: 9px 18px;
-	background: #4fc3f7;
-	border-radius: 8px;
-	font-weight: 600;
-}
-
-.reply_register button:hover {
-	background: #007acc;
+	box-shadow: 0 0 0 2px rgba(79, 195, 247, .15);
 }
 
 /* ======================================
-   댓글 목록 영역 (READ 페이지 전용)
+   댓글 리스트
 ====================================== */
-
-/* 전체 댓글 영역 */
 .reply_view {
 	margin-top: 30px;
 }
 
-/* 댓글 한 줄 카드화 */
-.reply_view tr {
-	display: block;
-	margin-bottom: 12px;
-	padding: 14px 18px;
-	border: 1px solid #e3f2fd;
-	border-radius: 10px;
-	background: #ffffff;
-	box-shadow: 0 2px 8px rgba(0, 170, 255, 0.05);
-	transition: all 0.18s ease;
-}
-
-/* hover */
-.reply_view tr:hover {
-	background: #f5fbff;
-}
-
-/* 내부 td 정렬 */
-.reply_view td {
-	display: inline-block;
-	vertical-align: middle;
-}
-
-/* 작성자 */
-.reply_view td:nth-child(1) {
-	width: 140px;
-	font-weight: 700;
-	color: #007acc;
-}
-
-/* 내용 */
-.reply_view td:nth-child(2) {
-	width: calc(100% - 320px);
-	color: #333;
-	word-break: break-word;
-}
-
-/* 날짜 */
-.reply_view td:nth-child(3) {
-	width: 160px;
-	text-align: right;
-	font-size: 13px;
-	color: #888;
-}
-
-/* ======================================
-   댓글 목록 영역
-====================================== */
-.reply_view {
-	margin-top: 35px;
-}
-
-/* 테이블 */
 .reply-table {
 	width: 100%;
 	border-collapse: collapse;
 }
 
-/* 헤더 */
 .reply-table th {
 	background: #e3f2fd;
 	color: #0d47a1;
@@ -353,42 +239,77 @@ button:hover {
 	text-align: center;
 }
 
-/* 바디 */
 .reply-table td {
 	padding: 12px;
 	border-bottom: 1px solid #eef7ff;
-	vertical-align: middle;
 }
 
-/* hover */
 .reply-table tbody tr:hover td {
 	background: #f5fbff;
 }
 
-/* 작성자 */
 .reply-writer {
 	font-weight: 700;
 	color: #007acc;
 	text-align: center;
 }
 
-/* 내용 */
 .reply-content {
 	color: #333;
 	word-break: break-word;
 }
 
-/* 날짜 */
 .reply-date {
 	font-size: 13px;
 	color: #888;
 	text-align: center;
 }
 
-/* 데이터 없을 때 */
 .reply-empty {
 	text-align: center;
 	padding: 30px 0;
 	color: #888;
 	font-weight: 600;
+}
+
+/* 댓글 버튼 영역 */
+.reply-actions {
+	text-align: right;
+	white-space: nowrap;
+}
+
+/* 댓글 버튼 */
+.reply-actions button {
+	padding: 4px 10px;
+	margin-left: 5px;
+	font-size: 12px;
+	background: #4fc3f7;
+	color: #fff;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+}
+
+.reply-actions button:hover {
+	background: #007acc;
+}
+
+/* 인라인 수정 버튼 */
+.inline-edit-btns {
+	margin-top: 5px;
+}
+
+.inline-edit-btns button {
+	padding: 4px 10px;
+	margin-right: 5px;
+	font-size: 12px;
+	background: #6c757d;
+	color: white;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+}
+
+.inline-edit-btns button:hover {
+	background: #495057;
 }

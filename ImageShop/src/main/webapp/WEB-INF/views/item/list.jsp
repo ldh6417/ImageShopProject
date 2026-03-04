@@ -14,7 +14,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Image Shop</title>
-<link rel="stylesheet" href="/css/board.css">
+<link rel="stylesheet" href="/css/item.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
@@ -22,7 +22,7 @@
 	<jsp:include page="/WEB-INF/views/common/menu.jsp" />
 
 	<!-- 메인화면 작업시작 -->
-	<div class="notice_list">
+	<div class="item_list">
 		<h2>
 			<spring:message code="item.header.list" />
 		</h2>
@@ -33,7 +33,7 @@
 		</sec:authorize>
 
 
-		<table border="1">
+		<table>
 			<tr>
 				<th align="center" width="80"><spring:message
 						code="item.itemId" /></th>

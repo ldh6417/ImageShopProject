@@ -35,7 +35,7 @@ public class BoardController {
 
 	// 게시글 등록 페이지
 	@GetMapping("/register")
-	@PreAuthorize("hasRole('ROLE_MEMBER')")
+	@PreAuthorize("hasAnyRole('ROLE_MEMBER','ROLE_ADMIN')")
 	public void registerForm(Model model, Authentication authentication) throws Exception {
 		// 로그인한 사용자 정보 획득
 		User user = (User) authentication.getPrincipal();

@@ -14,7 +14,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Image Shop</title>
-<link rel="stylesheet" href="/css/board.css">
+<link rel="stylesheet" href="/css/useritem.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
@@ -22,7 +22,7 @@
 	<jsp:include page="/WEB-INF/views/common/menu.jsp" />
 
 	<!-- 메인화면 작업시작 -->
-	<div>
+	<div class="useritem_listpay">
 
 		<h2>
 			<spring:message code="coin.header.listPay" />

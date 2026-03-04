@@ -1,0 +1,162 @@
+/* =========================
+   공통 컨테이너
+========================= */
+.useritem_list, .useritem_listpay, .useritem_read, .useritem_modify,
+	.useritem_register, .useritem_remove, .useritem_setup {
+	width: 1100px;
+	max-width: 95%;
+	margin: 40px auto;
+	padding: 35px 45px;
+	background: #ffffff;
+	border: 1px solid #e3f2fd;
+	border-radius: 12px;
+	box-shadow: 0 4px 14px rgba(0, 170, 255, 0.08);
+}
+
+/* =========================
+   제목
+========================= */
+.useritem_list h2, .useritem_listpay h2, .useritem_read h2,
+	.useritem_modify h2, .useritem_register h2, .useritem_remove h2,
+	.useritem_setup h2 {
+	margin-bottom: 28px;
+	font-size: 26px;
+	font-weight: 700;
+	color: #007acc;
+	border-bottom: 2px solid #e3f2fd;
+	padding-bottom: 12px;
+}
+
+/* =========================
+   테이블 공통
+========================= */
+.useritem_list table, .useritem_listpay table, .useritem_read table,
+	.useritem_modify table, .useritem_register table, .useritem_remove table,
+	.useritem_setup table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+/* =========================
+   리스트 테이블
+========================= */
+.useritem_list th, .useritem_listpay th {
+	background: #e3f2fd;
+	color: #0d47a1;
+	padding: 12px;
+	font-weight: 700;
+	border-bottom: 2px solid #b3e5fc;
+}
+
+.useritem_list td, .useritem_listpay td {
+	padding: 12px;
+	border-bottom: 1px solid #eef7ff;
+	word-break: break-all;
+}
+
+.useritem_list tr:hover td, .useritem_listpay tr:hover td {
+	background: #f5fbff;
+}
+
+/* =========================
+   form 영역
+========================= */
+.useritem_read td, .useritem_modify td, .useritem_register td,
+	.useritem_remove td, .useritem_setup td {
+	padding: 12px 10px;
+	vertical-align: middle;
+}
+
+.useritem_read td:first-child, .useritem_modify td:first-child,
+	.useritem_register td:first-child, .useritem_remove td:first-child,
+	.useritem_setup td:first-child {
+	font-weight: 600;
+	color: #222;
+	width: 200px;
+}
+
+/* =========================
+   input / textarea
+========================= */
+.useritem_modify input, .useritem_register input, .useritem_setup input,
+	.useritem_modify textarea, .useritem_register textarea {
+	width: 100%;
+	padding: 9px 12px;
+	border: 1px solid #cfefff;
+	border-radius: 6px;
+	font-size: 14px;
+	background: #ffffff;
+	transition: all 0.2s ease;
+}
+
+.useritem_modify textarea, .useritem_register textarea {
+	min-height: 180px;
+	resize: vertical;
+}
+
+/* focus */
+.useritem_modify input:focus, .useritem_register input:focus,
+	.useritem_setup input:focus, .useritem_modify textarea:focus,
+	.useritem_register textarea:focus {
+	outline: none;
+	border-color: #4fc3f7;
+	box-shadow: 0 0 0 2px rgba(79, 195, 247, 0.15);
+}
+
+/* readonly */
+.useritem_read input[readonly], .useritem_read textarea[readonly] {
+	background: #f5faff;
+	color: #666;
+}
+
+/* =========================
+   이미지
+========================= */
+.useritem_read img, .useritem_modify img, .useritem_remove img {
+	border-radius: 6px;
+	border: 1px solid #ddd;
+	margin-top: 5px;
+}
+
+/* =========================
+   링크
+========================= */
+.useritem_list a {
+	font-weight: 600;
+	color: #007acc;
+	text-decoration: none;
+}
+
+.useritem_list a:hover {
+	color: #005fa3;
+	text-decoration: underline;
+}
+
+/* =========================
+   버튼 영역
+========================= */
+.board-btn-area {
+	margin-top: 28px;
+	display: flex;
+	gap: 12px;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+
+/* =========================
+   버튼 스타일
+========================= */
+.board-btn-area button {
+	padding: 10px 20px;
+	background: #4fc3f7;
+	color: #fff;
+	border: none;
+	border-radius: 8px;
+	font-weight: 600;
+	cursor: pointer;
+	transition: all 0.18s ease;
+}
+
+.board-btn-area button:hover {
+	background: #007acc;
+}

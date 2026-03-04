@@ -1,0 +1,169 @@
+/* =========================
+   공통 컨테이너
+========================= */
+.coin_charge, .coin_list, .coin_listpay, .coin_read, .coin_modify,
+	.coin_remove, .coin_setup {
+	width: 1100px;
+	max-width: 95%;
+	margin: 40px auto;
+	padding: 35px 45px;
+	background: #ffffff;
+	border: 1px solid #e3f2fd;
+	border-radius: 12px;
+	box-shadow: 0 4px 14px rgba(0, 170, 255, 0.08);
+}
+
+/* =========================
+   제목
+========================= */
+.coin_charge h2, .coin_list h2, .coin_listpay h2, .coin_read h2,
+	.coin_modify h2, .coin_remove h2, .coin_setup h2 {
+	margin-bottom: 28px;
+	font-size: 26px;
+	font-weight: 700;
+	color: #007acc;
+	border-bottom: 2px solid #e3f2fd;
+	padding-bottom: 12px;
+}
+
+/* =========================
+   테이블 공통
+========================= */
+.coin_charge table, .coin_list table, .coin_listpay table, .coin_read table,
+	.coin_modify table, .coin_remove table, .coin_setup table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+/* =========================
+   리스트 테이블
+========================= */
+.coin_list table, .coin_listpay table {
+	table-layout: fixed;
+}
+
+.coin_list th, .coin_listpay th {
+	background: #e3f2fd;
+	color: #0d47a1;
+	padding: 13px 12px;
+	font-weight: 700;
+	border-bottom: 2px solid #b3e5fc;
+}
+
+.coin_list td, .coin_listpay td {
+	padding: 12px 12px;
+	border-bottom: 1px solid #eef7ff;
+	word-break: break-all;
+}
+
+.coin_list tr:hover td, .coin_listpay tr:hover td {
+	background: #f5fbff;
+}
+
+/* =========================
+   form 영역
+========================= */
+.coin_charge td, .coin_read td, .coin_modify td, .coin_remove td,
+	.coin_setup td {
+	padding: 12px 10px;
+	vertical-align: middle;
+}
+
+.coin_charge td:first-child, .coin_read td:first-child, .coin_modify td:first-child,
+	.coin_remove td:first-child, .coin_setup td:first-child {
+	font-weight: 600;
+	color: #222;
+	width: 200px;
+}
+
+/* =========================
+   input
+========================= */
+.coin_charge input, .coin_modify input, .coin_setup input {
+	width: 100%;
+	padding: 9px 12px;
+	border: 1px solid #cfefff;
+	border-radius: 6px;
+	font-size: 14px;
+	background: #ffffff;
+	transition: all 0.2s ease;
+}
+
+/* focus */
+.coin_charge input:focus, .coin_modify input:focus, .coin_setup input:focus
+	{
+	outline: none;
+	border-color: #4fc3f7;
+	box-shadow: 0 0 0 2px rgba(79, 195, 247, 0.15);
+}
+
+/* readonly */
+.coin_read input[readonly] {
+	background: #f5faff;
+	color: #666;
+}
+
+/* =========================
+   이미지
+========================= */
+.coin_read img, .coin_modify img, .coin_remove img {
+	border-radius: 6px;
+	border: 1px solid #ddd;
+	margin-top: 5px;
+}
+
+/* =========================
+   버튼 영역
+========================= */
+.board-btn-area {
+	margin-top: 28px;
+	display: flex;
+	gap: 12px;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+
+/* =========================
+   버튼 스타일
+========================= */
+.board-btn-area button {
+	padding: 10px 20px;
+	background: #4fc3f7;
+	color: #fff;
+	border: none;
+	border-radius: 8px;
+	font-weight: 600;
+	cursor: pointer;
+	transition: all 0.18s ease;
+}
+
+.board-btn-area button:hover {
+	background: #007acc;
+}
+
+/* =========================
+   코인 버튼 영역
+========================= */
+.coin_button {
+	margin-top: 30px;
+	display: flex;
+	justify-content: center;
+	gap: 12px;
+}
+
+/* 버튼 */
+.coin_button button {
+	padding: 10px 22px;
+	background: #4fc3f7;
+	color: #fff;
+	border: none;
+	border-radius: 8px;
+	font-size: 14px;
+	font-weight: 600;
+	cursor: pointer;
+	transition: all 0.2s ease;
+}
+
+.coin_button button:hover {
+	background: #007acc;
+}

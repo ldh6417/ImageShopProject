@@ -10,7 +10,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Image Shop</title>
-<link rel="stylesheet" href="/css/board.css">
+<link rel="stylesheet" href="/css/coin.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
@@ -19,7 +19,7 @@
 	<jsp:include page="/WEB-INF/views/common/menu.jsp" />
 
 	<!-- 메인 -->
-	<div class="notice_register">
+	<div class="coin_charge">
 		<h2>
 			<spring:message code="coin.header.chargeCoin" />
 		</h2>
@@ -37,7 +37,7 @@
 
 		<!-- 회원만 가능  코인충전 -->
 		<sec:authorize access="hasRole('ROLE_MEMBER')">
-			<div>
+			<div class="coin_button">
 				<button type="submit" id="btnCharge">
 					<spring:message code="action.charge" />
 				</button>

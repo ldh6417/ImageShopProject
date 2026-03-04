@@ -1,0 +1,149 @@
+/* ==============================
+   공통 컨테이너
+============================== */
+.notice_list, .notice_read, .notice_register, .notice_modify {
+	width: 1100px;
+	max-width: 95%;
+	margin: 40px auto;
+	padding: 30px 40px;
+	background: white;
+	border: 1px solid #e5e5e5;
+	border-radius: 10px;
+	box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* ==============================
+   제목
+============================== */
+.notice_list h2, .notice_read h2, .notice_register h2, .notice_modify h2
+	{
+	font-size: 24px;
+	font-weight: 700;
+	margin-bottom: 25px;
+	border-bottom: 2px solid #eee;
+	padding-bottom: 10px;
+}
+
+/* ==============================
+   테이블 (리스트)
+============================== */
+.notice_list table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+.notice_list th {
+	background: #f5f5f5;
+	padding: 12px;
+	border-bottom: 2px solid #ddd;
+	font-weight: 600;
+}
+
+.notice_list td {
+	padding: 12px;
+	border-bottom: 1px solid #eee;
+}
+
+/* hover */
+.notice_list tr:hover td {
+	background: #fafafa;
+}
+
+/* ==============================
+   form 영역
+============================== */
+.notice_read table, .notice_register table, .notice_modify table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+.notice_read td, .notice_register td, .notice_modify td {
+	padding: 12px 10px;
+	vertical-align: middle;
+}
+
+/* 왼쪽 label */
+.notice_register td:first-child, .notice_modify td:first-child {
+	width: 180px;
+	font-weight: 600;
+}
+
+/* ==============================
+   제목 input
+============================== */
+.notice_register input, .notice_modify input {
+	width: 100%;
+	padding: 10px 12px;
+	border: 1px solid #ddd;
+	border-radius: 6px;
+	height: 38px;
+	font-size: 15px;
+}
+
+/* ==============================
+   내용 textarea
+============================== */
+.notice_register textarea, .notice_modify textarea {
+	width: 100%;
+	padding: 12px;
+	border: 1px solid #ddd;
+	border-radius: 6px;
+	min-height: 180px;
+	font-size: 15px;
+	line-height: 1.6;
+	resize: vertical;
+}
+
+/* readonly */
+.notice_read input, .notice_read textarea {
+	background: #fafafa;
+}
+
+/* ==============================
+   버튼 영역
+============================== */
+.notice_btn_area {
+	margin-top: 25px;
+	text-align: center;
+}
+
+.notice_btn_area button {
+	padding: 8px 18px;
+	border: none;
+	border-radius: 6px;
+	background: #007acc;
+	color: white;
+	cursor: pointer;
+}
+
+.notice_btn_area button:hover {
+	background: #005fa3;
+}
+
+/* =========================
+   관리자 버튼 영역
+========================= */
+.admin_button {
+	margin-top: 30px;
+	display: flex;
+	justify-content: center;
+	gap: 12px;
+}
+
+/* 버튼 스타일 */
+.admin_button button {
+	padding: 10px 22px;
+	background: #4fc3f7;
+	color: #fff;
+	border: none;
+	border-radius: 8px;
+	font-size: 14px;
+	font-weight: 600;
+	cursor: pointer;
+	transition: all 0.2s ease;
+}
+
+/* hover 효과 */
+.admin_button button:hover {
+	background: #007acc;
+}

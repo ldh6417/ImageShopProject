@@ -10,13 +10,15 @@
 <head>
 <meta charset="UTF-8">
 <title>Image Shop</title>
-<link rel="stylesheet" href="/css/board.css">
+<link rel="stylesheet" href="/css/notice.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/common/header.jsp" />
 	<jsp:include page="/WEB-INF/views/common/menu.jsp" />
-	<div align="center">
+	
+	<!-- 메인화면 작업시작 -->
+	<div class="notice_read">
 		<h2>
 			<spring:message code="notice.header.read" />
 		</h2>

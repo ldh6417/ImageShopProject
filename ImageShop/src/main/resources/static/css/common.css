@@ -2,117 +2,100 @@
    전체 기본
 ========================= */
 body {
-  margin: 0;
-  padding: 0;
-  font-family: "Noto Sans KR", Arial, sans-serif;
-  background: #ffffff;
-  color: #111;
+	margin: 0;
+	padding: 0;
+	font-family: "Noto Sans KR", Arial, sans-serif;
+	background: #ffffff;
+	color: #111;
 }
 
 a {
-  text-decoration: none;
-  color: #007acc;
-  font-weight: 500;
+	text-decoration: none;
+	color: #007acc;
+	font-weight: 500;
 }
 
 a:hover {
-  color: #005fa3;
+	color: #005fa3;
 }
 
 /* =========================
    HEADER (homebar)
 ========================= */
 .app-homebar {
-  width: 100%;
-  background: #ffffff;
-  border-bottom: 1px solid #e3f2fd;
-  box-shadow: 0 2px 8px rgba(0, 170, 255, 0.06);
+	width: 100%;
+	background: #ffffff;
+	border-bottom: 1px solid #e3f2fd;
+	box-shadow: 0 2px 8px rgba(0, 170, 255, 0.06);
 }
 
 .app-homebar__inner {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 14px 20px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 14px 20px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
 }
 
 .app-homebar__link {
-  font-size: 20px;
-  font-weight: 700;
-  color: #007acc;
+	font-size: 20px;
+	font-weight: 700;
+	color: #007acc;
 }
 
 /* 우측 로그인 영역 */
 .app-homebar table {
-  border-collapse: collapse;
+	border-collapse: collapse;
 }
 
 .app-homebar td {
-  padding-left: 12px;
-  font-size: 14px;
+	padding-left: 12px;
+	font-size: 14px;
 }
 
 /* =========================
    MENU
 ========================= */
 .app-menu {
-  width: 100%;
-  background: #f5fbff;
-  border-bottom: 1px solid #d6efff;
+	width: 100%;
+	background: #f5fbff;
+	border-bottom: 1px solid #d6efff;
 }
 
 .app-menu table {
-  margin: 0 auto;
-  border-collapse: collapse;
+	margin: 0 auto;
+	border-collapse: collapse;
 }
 
+.app-menu tr {
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	gap: 10px;
+}
+
+/* 메뉴 칸 */
 .app-menu td {
-  padding: 12px 16px;
-  font-size: 14px;
-  font-weight: 600;
+	width: 120px; /* 메뉴 크기 통일 */
+	text-align: center; /* 글자 가운데 */
+	padding: 10px 0;
+	font-size: 14px;
+	font-weight: 600;
 }
 
-/* 메뉴 hover */
+/* 메뉴 링크 */
 .app-menu a {
-  padding: 6px 10px;
-  border-radius: 6px;
-  transition: all 0.18s ease;
+	display: block;
+	width: 100%;
+	padding: 8px 0;
+	border-radius: 6px;
+	text-align: center;
+	transition: all 0.18s ease;
 }
 
+/* hover */
 .app-menu a:hover {
-  background: #e3f2fd;
-  color: #005fa3;
-}
-
-/* =========================
-   FOOTER
-========================= */
-.app-footer {
-  margin-top: 60px;
-  background: #f8fcff;
-  border-top: 1px solid #e3f2fd;
-}
-
-.app-footer__inner {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 24px 20px;
-  text-align: center;
-}
-
-.app-footer__text {
-  margin: 0;
-  font-size: 13px;
-  color: #666;
-}
-
-/* =========================
-   구분선 정리
-========================= */
-hr {
-  border: none;
-  border-top: 1px solid #eef7ff;
-  margin: 0;
+	background: #e3f2fd;
+	color: #005fa3;
 }

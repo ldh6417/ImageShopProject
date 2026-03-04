@@ -14,7 +14,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Image Shop</title>
-<link rel="stylesheet" href="/css/board.css">
+<link rel="stylesheet" href="/css/useritem.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
@@ -22,13 +22,13 @@
 	<jsp:include page="/WEB-INF/views/common/menu.jsp" />
 
 	<!-- 메인화면 작업시작 -->
-	<div>
+	<div class="useritem_list">
 	
 		<h2>
 			<spring:message code="useritem.header.list" />
 		</h2>
 
-		<table border="1">
+		<table>
 			<tr>
 				<th align="center" width="80"><spring:message
 						code="useritem.no" /></th>

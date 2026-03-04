@@ -28,25 +28,23 @@
 		</h2>
 
 		<!-- 검색 폼을 만든다. -->
-		<form:form modelAttribute="pgrq" method="get"
-			action="list${pgrq.toUriStringByPage()}">
-			<form:select path="searchType" items="${searchTypeCodeValueList}"
-				itemValue="value" itemLabel="label" />
+		<div class="board_search">
+			<form:form modelAttribute="pgrq" method="get"
+				action="list${pgrq.toUriStringByPage()}">
+				<form:select path="searchType" items="${searchTypeCodeValueList}"
+					itemValue="value" itemLabel="label" />
 
-			<form:input path="keyword" />
-			<button id='searchBtn'>
-				<spring:message code="action.search" />
-			</button>
-		</form:form>
+				<form:input path="keyword" />
+				<button id='searchBtn'>
+					<spring:message code="action.search" />
+				</button>
+			</form:form>
+		</div>
 
-		<sec:authorize access="hasRole('ROLE_MEMBER')">
-			<a href="/board/register"> <spring:message code="action.new" /></a>
+		<sec:authorize access="hasAnyRole('ROLE_MEMBER','ROLE_ADMIN')">
+			<a href="/board/register"> <spring:message code="action.new" />
+			</a>
 		</sec:authorize>
-
-		<sec:authorize access="hasRole('ROLE_ADMIN')">
-			<a href="/board/register"> <spring:message code="action.new" /></a>
-		</sec:authorize>
-
 		<table>
 			<tr>
 				<th align="center" width="80"><spring:message code="board.no" /></th>
@@ -81,6 +79,7 @@
 				</c:otherwise>
 			</c:choose>
 		</table>
+
 		<!-- 페이징네비게이션 -->
 		<div>
 			<c:if test="${empty pgrq.keyword}">

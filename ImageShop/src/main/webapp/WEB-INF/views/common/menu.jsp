@@ -6,7 +6,7 @@
 
 <link rel="stylesheet" href="/css/common.css">
 
-<div class="app-menu" align="right">
+<div class="app-menu">
 	<table>
 		<tr>
 			<!-- 비회원 인증을 하지 않았을 때 메뉴 -->
@@ -76,7 +76,6 @@
 		</tr>
 	</table>
 </div>
-<hr>
 
 
 

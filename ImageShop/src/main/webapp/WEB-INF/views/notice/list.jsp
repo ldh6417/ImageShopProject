@@ -14,7 +14,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Image Shop</title>
-<link rel="stylesheet" href="/css/board.css">
+<link rel="stylesheet" href="/css/notice.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
@@ -35,7 +35,7 @@
 			<a href="/notice/register"> <spring:message code="action.new" /></a>
 		</sec:authorize>
 
-		<table border="1">
+		<table>
 			<tr>
 				<th align="center" width="80"><spring:message code="notice.no" /></th>
 				<th align="center" width="320"><spring:message

@@ -27,9 +27,6 @@
 			<spring:message code="item.header.list" />
 		</h2>
 
-		<!-- 검색 폼을 영역 -->
-
-
 
 		<sec:authorize access="hasRole('ROLE_ADMIN')">
 			<a href="/item/register"> <spring:message code="action.new" /></a>
@@ -101,8 +98,6 @@
 				</c:otherwise>
 			</c:choose>
 		</table>
-
-		<!--페이징 네비게이션 추가 -->
 
 	</div>
 	<!-- 메인화면 작업끝 -->

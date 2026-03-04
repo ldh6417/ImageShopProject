@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.project.commom.security.domain.CustomUser;
 import com.project.domain.Member;
 import com.project.domain.UserItem;
+import com.project.exception.NotMyItemException;
 import com.project.service.UserItemService;
 
 @Controller
@@ -57,13 +58,20 @@ public class UserItemController {
 	@PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_MEMBER')")
 	public ResponseEntity<byte[]> download(UserItem _userItem, Authentication authentication) throws Exception {
 		UserItem userItem = service.read(_userItem);
+
+		CustomUser customUser = (CustomUser) authentication.getPrincipal();
+		Member member = customUser.getMember();
+		if (member.getUserNo() != userItem.getUserNo()) {
+			throw new NotMyItemException("이것은 나의 구매 상품이 아니다.");
+		}
+
 		String fullName = userItem.getPictureUrl();
 		InputStream in = null;
 		ResponseEntity<byte[]> entity = null;
 
 		try {
 			HttpHeaders headers = new HttpHeaders();
-			
+
 			in = new FileInputStream(uploadPath + File.separator + fullName);
 			String fileName = fullName.substring(fullName.indexOf("_") + 1);
 
@@ -80,5 +88,12 @@ public class UserItemController {
 		}
 
 		return entity;
+	}
+
+	// 본인 상품 예외 처리
+	@GetMapping(value = "/notMyItem")
+	@PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_MEMBER')")
+	public void notMyItem(Model model) throws Exception {
+		
 	}
 }

@@ -51,20 +51,26 @@
 					<td class="nav-item"><a href="/board/list" class="nav-link">
 							<spring:message code="board.header.list" />
 					</a></td>
-					
+
 					<!-- 공지사항을 메뉴에 추가한다. -->
 					<td class="nav-item"><a href="/notice/list" class="nav-link"><spring:message
 								code="menu.notice.member" /></a></td>
-								
+
 					<!-- 상품 관리를 메뉴에 추가한다. -->
 					<td width="120"><a href="/item/list"><spring:message
 								code="menu.item.member" /></a></td>
-								
+
 					<!-- 코인 충전과 충전 내역을 메뉴에 추가한다. -->
 					<td width="120"><a href="/coin/charge"><spring:message
 								code="menu.coin.charge" /></a></td>
 					<td width="120"><a href="/coin/list"><spring:message
 								code="menu.coin.list" /></a></td>
+
+					<!-- 구매 상품과 구매 내역을 메뉴에 추가한다. -->
+					<td width="120"><a href="/useritem/list"><spring:message
+								code="menu.useritem.list" /></a></td>
+					<td width="120"><a href="/coin/listPay"><spring:message
+								code="menu.coin.listPay" /></a></td>
 				</sec:authorize>
 			</sec:authorize>
 		</tr>

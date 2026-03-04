@@ -3,11 +3,21 @@ package com.project.mapper;
 import java.util.List;
 
 import com.project.domain.ChargeCoin;
+import com.project.domain.Member;
+import com.project.domain.PayCoin;
 
 public interface CoinMapper {
-
+	//개인 코인 충전
 	public int charge(ChargeCoin chargeCoin) throws Exception;
-
+	//충전 내역 등록
 	public List<ChargeCoin> list(int userNo) throws Exception;
-
+	//충전 내역 리스트 
+	public int create(ChargeCoin chargeCoin) throws Exception;
+	
+	// 개인 코인 차감 
+	public int pay(PayCoin payCoin) throws Exception;
+	// 구매 내역 등록
+	public int createPayHistory(PayCoin payCoin) throws Exception;
+	// 구매 내역 리스트 
+	public List<PayCoin> listPayHistory(Member member) throws Exception;
 }

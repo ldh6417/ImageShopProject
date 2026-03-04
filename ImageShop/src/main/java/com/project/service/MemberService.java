@@ -22,4 +22,6 @@ public interface MemberService {
 
 	public Member readByNo(String username) throws Exception;
 
+	// 회원의 코인을 반환한다.
+	public int getCoin(Member member) throws Exception;
 }

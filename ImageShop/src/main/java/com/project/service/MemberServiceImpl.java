@@ -76,7 +76,7 @@ public class MemberServiceImpl implements MemberService {
 	public int countAll() throws Exception {
 		return mapper.countAll();
 	}
-	
+
 	@Transactional
 	@Override
 	public void setupAdmin(Member member) throws Exception {
@@ -95,6 +95,11 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public Member readByNo(String username) throws Exception {
 		return mapper.readByNo(username);
+	}
+
+	@Override
+	public int getCoin(Member member) throws Exception {
+		return mapper.getCoin(member);
 	}
 
 }

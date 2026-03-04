@@ -20,49 +20,49 @@
 
 	<!-- 메인 -->
 	<div class="notice_register">
-		<h2>
-			<spring:message code="item.header.read" />
-		</h2>
+		<h2><spring:message code="item.header.register" /></h2>
 
-		<form:form modelAttribute="item" action="/item/buy" method="post">
-			<form:hidden path="itemId" />
-
+		<form:form modelAttribute="item" action="/item/register"
+			enctype="multipart/form-data" method="post">
 			<table>
 				<tr>
 					<td><spring:message code="item.itemName" /></td>
-					<td><form:input path="itemName" readonly="true" /></td>
+					<td><form:input path="itemName" /></td>
 					<td><font color="red"><form:errors path="itemName" /></font></td>
 				</tr>
-				<tr class="price">
+				<tr>
 					<td><spring:message code="item.itemPrice" /></td>
-					<td><form:input path="price" readonly="true" /></td>
+					<td><form:input path="price" />&nbsp;원</td>
 					<td><font color="red"><form:errors path="price" /></font></td>
 				</tr>
-
 				<tr>
-					<td><spring:message code="item.picture" /></td>
-					<td><img src="/item/picture?itemId=${item.itemId}" width="210"></td>
+
+					<td><spring:message code="item.itemFile" /></td>
+					<td><input type="file" name="picture" /></td>
+					<td></td>
 				</tr>
 				<tr>
-					<td><spring:message code="item.preview" /></td>
-					<td><img src="/item/display?itemId=${item.itemId}" width="210"></td>
+					<td><spring:message code="item.itemPreviewFile" /></td>
+					<td><input type="file" name="preview" /></td>
+					<td></td>
+
 				</tr>
-
-
 				<tr>
+
 					<td><spring:message code="item.itemDescription" /></td>
 					<td><form:textarea path="description" /></td>
 					<td><form:errors path="description" /></td>
 				</tr>
 			</table>
-
 		</form:form>
 		<div class="board-btn-area">
 
-			<button type="button" id="btnBuy">
-				<spring:message code="action.buy" />
-			</button>
-			
+			<sec:authorize access="hasRole('ROLE_ADMIN')">
+				<button type="button" id="btnRegister">
+					<spring:message code="action.register" />
+				</button>
+			</sec:authorize>
+
 			<button type="button" id="btnList">
 				<spring:message code="action.list" />
 			</button>
@@ -78,9 +78,10 @@
 		$(document).ready(function() {
 			const formObj = $("#item");
 
-			$("#btnBuy").on("click", function() {
+			$("#btnRegister").on("click", function() {
 				formObj.submit();
 			});
+
 			$("#btnList").on("click", function() {
 				self.location = "/item/list";
 			});

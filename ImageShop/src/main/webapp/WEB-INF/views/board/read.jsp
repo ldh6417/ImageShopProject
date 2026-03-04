@@ -234,7 +234,6 @@
 								self.location = "/board/list?page=" + page
 										+ "&sizePerPage=" + sizePerPage;
 							});
-
 				});
 
 		function showEditForm(replyNo) {
